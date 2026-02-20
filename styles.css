@@ -72,14 +72,7 @@ nav {
 
 /* Hero Section */
 .hero {
-    background-image: 
-        linear-gradient(
-            135deg,
-            rgba(249, 115, 22, 0.7) 0%,
-            rgba(59, 130, 246, 0.7) 100%
-        ),
-        url("images/teampic.jpeg");
-
+    background-image: url("images/teampic.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -377,11 +370,10 @@ footer p {
 }
 
 .social-icon svg {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .social-icon:hover svg {
-    opacity: 0.8;
     transform: scale(1.15);
 }
 
