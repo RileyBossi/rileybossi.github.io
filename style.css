@@ -1,4 +1,6 @@
-/* ===== GLOBAL ===== */
+/* =========================
+   GLOBAL
+========================= */
 
 * {
     margin: 0;
@@ -6,22 +8,20 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background: #0a0f14;
-    color: #d7e3ec;
+    background: #0b1118;
+    color: #d8e6f2;
     font-family: "Segoe UI", sans-serif;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-a {
-    text-decoration: none;
-    color: #4db8ff;
-    transition: 0.3s;
-}
-
-a:hover {
-    color: #8cd6ff;
-}
+/* =========================
+   CONTAINER
+========================= */
 
 .container {
     width: 90%;
@@ -29,28 +29,47 @@ a:hover {
     margin: auto;
 }
 
-/* ===== NAVBAR ===== */
+/* =========================
+   LINKS
+========================= */
+
+a {
+    text-decoration: none;
+    color: #55c2ff;
+    transition: 0.25s;
+}
+
+a:hover {
+    color: #9fe2ff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 
 nav {
-    background: #101820;
-    border-bottom: 1px solid #1f2b36;
-    padding: 20px 0;
+    background: rgba(10, 16, 24, 0.95);
+    border-bottom: 1px solid #1d2a36;
     position: sticky;
     top: 0;
     z-index: 999;
+    backdrop-filter: blur(10px);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 18px 0;
 }
 
 .logo {
     font-size: 1.5rem;
-    color: #4db8ff;
     font-weight: bold;
+    color: #55c2ff;
 }
+
+/* NAV LINKS */
 
 .nav-links {
     display: flex;
@@ -58,15 +77,47 @@ nav {
 }
 
 .nav-links a {
-    color: #d7e3ec;
+    color: #d8e6f2;
     font-size: 0.95rem;
+    position: relative;
 }
 
-.nav-links a:hover {
-    color: #4db8ff;
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #55c2ff;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
 }
 
-/* ===== HERO ===== */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 26px;
+    height: 3px;
+    background: #d8e6f2;
+    border-radius: 2px;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 85vh;
@@ -80,84 +131,127 @@ nav {
 }
 
 .hero-content h2 {
-    color: #4db8ff;
+    color: #55c2ff;
     margin-bottom: 20px;
 }
 
 .hero-content p {
     max-width: 700px;
-    color: #9fb3c8;
+    color: #9bb0c2;
     margin-bottom: 30px;
 }
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    border: 1px solid #4db8ff;
-    color: #4db8ff;
-    border-radius: 5px;
+    border: 1px solid #55c2ff;
+    border-radius: 6px;
+    color: #55c2ff;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: #4db8ff;
-    color: #0a0f14;
+    background: #55c2ff;
+    color: #0b1118;
 }
 
-/* ===== SECTION ===== */
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
     padding: 80px 0;
 }
 
 .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #4db8ff;
+    font-size: 2.4rem;
+    color: #55c2ff;
+    margin-bottom: 35px;
 }
 
+/* =========================
+   CARD
+========================= */
+
 .card {
-    background: #101820;
-    border: 1px solid #1f2b36;
-    padding: 25px;
-    margin-bottom: 25px;
+    background: #121b25;
+    border: 1px solid #1d2a36;
     border-radius: 10px;
+    padding: 28px;
+    margin-bottom: 28px;
     transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: #4db8ff;
+    border-color: #55c2ff;
 }
 
 .card h3 {
+    color: white;
     margin-bottom: 15px;
-    color: #ffffff;
+}
+
+.card p {
+    color: #c2d3df;
 }
 
 .card ul {
+    margin-top: 15px;
     margin-left: 20px;
 }
 
-/* ===== FOOTER ===== */
-
-footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid #1f2b36;
-    color: #8093a7;
+.card li {
+    margin-bottom: 8px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   FOOTER
+========================= */
 
-@media (max-width: 768px) {
+footer {
+    border-top: 1px solid #1d2a36;
+    text-align: center;
+    padding: 30px;
+    color: #7f95a8;
+}
 
-    .hero-content h1 {
-        font-size: 2.5rem;
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: flex;
     }
 
     .nav-links {
-        flex-wrap: wrap;
-        gap: 12px;
+        position: absolute;
+        top: 72px;
+        right: 5%;
+        background: #121b25;
+        flex-direction: column;
+        width: 230px;
+        padding: 20px;
+        border: 1px solid #1d2a36;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-content h1 {
+        font-size: 2.7rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
     }
 }
