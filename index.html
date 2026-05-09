@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riley Bossi | Cybersecurity Portfolio</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
+
 
 <nav>
     <div class="container nav-container">
+
         <div class="logo">Riley Bossi</div>
 
-        <div class="nav-links">
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="current-work.html">Current Work</a>
             <a href="projects.html">Projects</a>
@@ -22,6 +31,7 @@
             <a href="certifications.html">Certifications</a>
             <a href="contact.html">Contact</a>
         </div>
+
     </div>
 </nav>
 
@@ -32,12 +42,12 @@
 
         <h1>Riley Bossi</h1>
 
-        <h2>Cybersecurity • IT Operations • Threat Detection</h2>
+        <h2>Cybersecurity • SIEM • Threat Detection • IT Operations</h2>
 
         <p>
-            Computer Science student at Central Connecticut State University with
-            hands-on experience in cybersecurity operations, SIEM monitoring,
-            zero trust security, malware analysis, and IT infrastructure.
+            Computer Science student at Central Connecticut State University
+            with hands-on experience in security operations, SIEM analysis,
+            phishing investigations, malware analysis, and IT infrastructure.
         </p>
 
         <a href="projects.html" class="btn">View Projects</a>
@@ -48,6 +58,17 @@
 <footer>
     © 2026 Riley Bossi
 </footer>
+
+<script>
+
+const menuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
 
 </body>
 </html>
