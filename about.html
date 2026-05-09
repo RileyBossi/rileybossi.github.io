@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Riley Bossi</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR HERE -->
+<nav>
+    <div class="container nav-container">
+
+        <div class="logo">Riley Bossi</div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="current-work.html">Current Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+</nav>
 
 <section class="section">
     <div class="container">
@@ -16,27 +39,27 @@
         <h1 class="section-title">About Me</h1>
 
         <div class="card">
+
             <p>
-                I'm a passionate and ambitious Computer Science student at
-                Central Connecticut State University with CompTIA CySA+,
-                Security+, and Network+ certifications.
+                I'm a passionate and ambitious Computer Science student
+                at Central Connecticut State University.
             </p>
 
             <br>
 
             <p>
                 I currently work as an IT Support Technician at an MSP,
-                supporting multiple client environments with a focus on
-                security operations, monitoring, zero trust principles,
-                SIEM analysis, and Level 1-2 support responsibilities.
+                supporting multiple client environments with a focus on:
             </p>
 
-            <br>
+            <ul>
+                <li>Security Operations</li>
+                <li>Threat Detection</li>
+                <li>Zero Trust Security</li>
+                <li>SIEM Monitoring</li>
+                <li>Level 1-2 IT Support</li>
+            </ul>
 
-            <p>
-                My interests include threat detection, DFIR, malware analysis,
-                cloud security, SIEM engineering, and network defense.
-            </p>
         </div>
 
     </div>
@@ -45,6 +68,17 @@
 <footer>
     © 2026 Riley Bossi
 </footer>
+
+<script>
+
+const menuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
 
 </body>
 </html>
