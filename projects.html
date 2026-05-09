@@ -1,49 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Riley Bossi</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="container nav-container">
+
+        <div class="logo">Riley Bossi</div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="current-work.html">Current Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
 <section class="section">
+
     <div class="container">
 
         <h1 class="section-title">Projects</h1>
 
         <div class="card">
+
             <h3>At-Home Cybersecurity Lab</h3>
 
             <p>
-                Built a virtualized security lab using VMware Fusion,
-                pfSense, Kali Linux, and Windows VMs to practice:
+                Virtualized network environment built using pfSense,
+                Kali Linux, VMware Fusion, and Windows VMs.
             </p>
 
-            <ul>
-                <li>Firewall configuration</li>
-                <li>Traffic analysis</li>
-                <li>Intrusion detection</li>
-                <li>Packet inspection with Wireshark</li>
-                <li>Snort IDS deployment</li>
-            </ul>
         </div>
 
         <div class="card">
+
             <h3>Microsoft Sentinel Log Ingestion Lab</h3>
 
             <p>
-                Created a custom Microsoft Sentinel ingestion pipeline
-                using Azure Logic Apps and Log Analytics.
+                Built custom ingestion workflows using Azure Logic Apps,
+                Log Analytics, and Microsoft Sentinel.
             </p>
+
         </div>
 
         <div class="card">
-            <h3>TryHackMe SOC Training</h3>
+
+            <h3>TryHackMe SOC Labs</h3>
 
             <p>
-                Completed SOC Level 1 and SOC Level 2 pathways focused on:
+                Completed SOC Level 1 and SOC Level 2 training paths
+                focused on incident response and threat analysis.
             </p>
 
-            <ul>
-                <li>Threat detection</li>
-                <li>Incident response</li>
-                <li>MITRE ATT&CK</li>
-                <li>Phishing analysis</li>
-                <li>SIEM operations</li>
-            </ul>
         </div>
 
     </div>
+
 </section>
+
+<footer>
+    © 2026 Riley Bossi
+</footer>
+
+<script>
+
+const menuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
+
+</body>
+</html>
