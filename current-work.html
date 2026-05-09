@@ -1,4 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Work | Riley Bossi</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="container nav-container">
+
+        <div class="logo">Riley Bossi</div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="current-work.html">Current Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="certifications.html">Certifications</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+</nav>
+
 <section class="section">
+
     <div class="container">
 
         <h1 class="section-title">What I'm Currently Working On</h1>
@@ -7,23 +43,42 @@
             <h3>Security Operations</h3>
 
             <ul>
-                <li>Investigating phishing emails and sandbox detonation</li>
-                <li>SIEM alert investigation and log analysis</li>
-                <li>ThreatLocker policy creation and ringfencing</li>
-                <li>PowerShell-based endpoint investigations</li>
+                <li>Phishing investigations</li>
+                <li>ThreatLocker policy creation</li>
+                <li>SIEM alert analysis</li>
+                <li>PowerShell investigations</li>
             </ul>
         </div>
 
         <div class="card">
-            <h3>Home Lab Development</h3>
+            <h3>Home Lab Improvements</h3>
 
             <ul>
-                <li>pfSense firewall tuning</li>
-                <li>Snort IDS configuration</li>
-                <li>Windows Event Log analysis</li>
-                <li>Network segmentation and VLAN testing</li>
+                <li>Snort IDS tuning</li>
+                <li>VLAN testing</li>
+                <li>Traffic inspection</li>
+                <li>Firewall hardening</li>
             </ul>
         </div>
 
     </div>
+
 </section>
+
+<footer>
+    © 2026 Riley Bossi
+</footer>
+
+ <script>
+
+const menuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
+
+</body>
+</html>
