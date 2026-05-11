@@ -64,7 +64,7 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #55c2ff;
 }
@@ -120,30 +120,38 @@ nav {
 ========================= */
 
 .hero {
-    min-height: 85vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
 }
 
 .hero-content h1 {
     font-size: 4rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .hero-content h2 {
     color: #55c2ff;
     margin-bottom: 20px;
+    font-weight: 400;
 }
 
 .hero-content p {
-    max-width: 700px;
+    max-width: 800px;
     color: #9bb0c2;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 /* =========================
-   BUTTON
+   BUTTONS
 ========================= */
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
 
 .btn {
     display: inline-block;
@@ -160,7 +168,7 @@ nav {
 }
 
 /* =========================
-   SECTIONS
+   SECTION
 ========================= */
 
 .section {
@@ -181,13 +189,13 @@ nav {
     background: #121b25;
     border: 1px solid #1d2a36;
     border-radius: 10px;
-    padding: 28px;
-    margin-bottom: 28px;
+    padding: 30px;
+    margin-bottom: 30px;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     border-color: #55c2ff;
 }
 
@@ -206,7 +214,7 @@ nav {
 }
 
 .card li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 /* =========================
@@ -215,9 +223,15 @@ nav {
 
 footer {
     border-top: 1px solid #1d2a36;
-    text-align: center;
-    padding: 30px;
+    padding: 40px 0;
     color: #7f95a8;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* =========================
@@ -253,5 +267,9 @@ footer {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
     }
 }
