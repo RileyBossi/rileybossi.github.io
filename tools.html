@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
     <div class="container nav-container">
 
@@ -22,17 +23,16 @@
 
         <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
             <a href="current-work.html">Current Work</a>
             <a href="projects.html">Projects</a>
             <a href="tools.html">Tools</a>
             <a href="certifications.html">Certifications</a>
-            <a href="contact.html">Contact</a>
         </div>
 
     </div>
 </nav>
 
+<!-- CONTENT -->
 <section class="section">
 
     <div class="container">
@@ -40,40 +40,104 @@
         <h1 class="section-title">Tools & Technologies</h1>
 
         <div class="card">
-            <h3>Security Tools</h3>
+
+            <h3>Security & Monitoring Tools</h3>
 
             <p>
-                Splunk, Sentinel, ELK Stack, Wireshark,
-                Wazuh, ThreatLocker, Sysmon, Snort, pfSense
+                This section will continue to grow as I expand my lab and production experience.
             </p>
+
+            <ul>
+                <li>Splunk</li>
+                <li>Microsoft Sentinel</li>
+                <li>ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+                <li>Wireshark</li>
+                <li>Snort IDS</li>
+                <li>Wazuh</li>
+                <li>ThreatLocker</li>
+                <li>pfSense</li>
+                <li>Sysmon</li>
+            </ul>
+
         </div>
 
         <div class="card">
-            <h3>Languages</h3>
+
+            <h3>Languages & Scripting</h3>
+
+            <ul>
+                <li>Python</li>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>SQL</li>
+                <li>PowerShell</li>
+                <li>HTML / CSS</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Cloud & Infrastructure</h3>
+
+            <ul>
+                <li>Microsoft Azure (Entra ID, Log Analytics, Sentinel)</li>
+                <li>Windows Server / Active Directory</li>
+                <li>Linux (Kali, Ubuntu)</li>
+                <li>VMware Fusion</li>
+                <li>Networking fundamentals (VLANs, DHCP, DNS, routing)</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Status</h3>
 
             <p>
-                Java, Python, SQL, JavaScript, PowerShell,
-                HTML, CSS
+                This section is actively evolving as I continue building my home lab,
+                expanding cloud security experience, and working with enterprise tools in production environments.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
+<!-- FOOTER -->
 <footer>
-    © 2026 Riley Bossi
+
+    <div class="container footer-content">
+
+        <div>
+            <h3>Riley Bossi</h3>
+            <p>Cybersecurity • SIEM • Threat Detection • IT Operations</p>
+        </div>
+
+        <div>
+            <p>Email: rileybossi2005@gmail.com</p>
+
+            <p>
+                <a href="https://www.linkedin.com/in/riley-bossi-b08729295?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">
+                    LinkedIn Profile
+                </a>
+            </p>
+        </div>
+
+    </div>
+
 </footer>
 
+<!-- SCRIPT -->
 <script>
-
 const menuBtn = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
 
 menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
-
 </script>
+
 </body>
 </html>
