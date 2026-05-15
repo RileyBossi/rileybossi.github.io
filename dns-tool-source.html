@@ -69,8 +69,179 @@
         </div>
 
         <pre><code>
-PASTE YOUR FULL POWERSHELL SCRIPT HERE
-        </code></pre>
+<#
+.SYNOPSIS
+    Retrieves DNS records for a domain, including SPF, DMARC, DKIM, and optional subdomains.
+#>
+
+param(
+    [Parameter(Mandatory = $false)]
+    [switch]$Help,
+
+    [Parameter(Mandatory = $false)]
+    [string]$Domain,
+
+    [string[]]$DkimSelectors = @(
+        "default","selector1","selector2","google","k1","dkim","smtpapi","mandrill","mail","m1","m2"
+    ),
+
+    [string[]]$Subdomains,
+
+    [string]$DnsServer
+)
+
+if ($Help -or [string]::IsNullOrWhiteSpace($Domain)) {
+    Write-Host ""
+    Write-Host "Get-DnsRecords.ps1 - DNS Lookup Tool" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "Usage:" -ForegroundColor Yellow
+    Write-Host "  .\Get-DnsRecords.ps1 -Domain <domain> [-Subdomains <list>] [-DnsServer <server>]"
+    Write-Host "  .\Get-DnsRecords.ps1 -Help"
+    Write-Host ""
+    Write-Host "Examples:" -ForegroundColor Yellow
+    Write-Host "  .\Get-DnsRecords.ps1 -Domain example.com"
+    Write-Host "  .\Get-DnsRecords.ps1 -Domain example.com -Subdomains www,mail"
+    Write-Host "  .\Get-DnsRecords.ps1 -Domain nwdevo.com -Subdomains www"
+    Write-Host ""
+    return
+}
+
+$recordTypes = @("A","AAAA","MX","NS","TXT","CNAME","SOA")
+$subdomainRecordTypes = @("A","AAAA","MX","TXT","CNAME","SOA")
+
+function Invoke-DnsLookup {
+    param(
+        [string]$Name,
+        [string]$Type
+    )
+
+    if ([string]::IsNullOrWhiteSpace($DnsServer)) {
+        Resolve-DnsName -Name $Name -Type $Type -ErrorAction Stop
+    }
+    else {
+        Resolve-DnsName -Name $Name -Type $Type -Server $DnsServer -ErrorAction Stop
+    }
+}
+
+function Get-DnsRecordObjects {
+    param(
+        [string]$Name,
+        [string]$Type,
+        [string]$Category = "General"
+    )
+
+    try {
+        Invoke-DnsLookup -Name $Name -Type $Type | ForEach-Object {
+            $data = if ($_.IPAddress) {
+                $_.IPAddress
+            }
+            elseif ($_.NameHost) {
+                $_.NameHost
+            }
+            elseif ($_.MailExchange) {
+                "$($_.Preference) $($_.MailExchange)"
+            }
+            elseif ($_.Strings) {
+                ($_.Strings -join "")
+            }
+            elseif ($_.PrimaryServer) {
+                "PrimaryServer=$($_.PrimaryServer); Serial=$($_.SerialNumber)"
+            }
+            elseif ($_.HostName) {
+                $_.HostName
+            }
+            elseif ($_.Target) {
+                $_.Target
+            }
+            elseif ($_.CanonicalName) {
+                $_.CanonicalName
+            }
+            else {
+                ($_ | Out-String).Trim()
+            }
+
+            [PSCustomObject]@{
+                Category   = $Category
+                QueryName  = $Name
+                RecordType = $_.Type
+                Value      = $data
+            }
+        }
+    }
+    catch {
+        @()
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace($DnsServer)) {
+    Write-Host "`nUsing system default DNS resolver" -ForegroundColor Cyan
+}
+else {
+    Write-Host "`nUsing DNS server: $DnsServer" -ForegroundColor Cyan
+}
+
+Write-Host "`nChecking standard DNS records..." -ForegroundColor Cyan
+$generalResults = foreach ($type in $recordTypes) {
+    Get-DnsRecordObjects -Name $Domain -Type $type -Category "General"
+}
+
+Write-Host "Checking SPF..." -ForegroundColor Cyan
+$spfResults = Get-DnsRecordObjects -Name $Domain -Type "TXT" |
+    Where-Object { $_.Value -match "^v=spf1" }
+
+Write-Host "Checking DMARC..." -ForegroundColor Cyan
+$dmarcResults = Get-DnsRecordObjects -Name "_dmarc.$Domain" -Type "TXT" |
+    Where-Object { $_.Value -match "^v=DMARC1" }
+
+Write-Host "Checking DKIM..." -ForegroundColor Cyan
+$dkimResults = foreach ($selector in $DkimSelectors) {
+    Get-DnsRecordObjects -Name "$selector._domainkey.$Domain" -Type "TXT" |
+        Where-Object { $_.Value -match "^v=DKIM1" }
+}
+
+$subdomainResults = @()
+
+if ($Subdomains -and $Subdomains.Count -gt 0) {
+    Write-Host "Checking subdomain records..." -ForegroundColor Cyan
+
+    $subdomainResults = foreach ($sub in $Subdomains) {
+        $fqdn = "$sub.$Domain"
+
+        foreach ($type in $subdomainRecordTypes) {
+            Get-DnsRecordObjects -Name $fqdn -Type $type -Category "Subdomain"
+        }
+    }
+}
+
+Write-Host "`n=== STANDARD DNS RECORDS ===" -ForegroundColor Yellow
+$generalResults |
+    Sort-Object QueryName, RecordType, Value |
+    Format-Table Category, RecordType, QueryName, Value -AutoSize
+
+Write-Host "`n=== SPF ===" -ForegroundColor Yellow
+if ($spfResults) { $spfResults | Format-List }
+else { Write-Host "No SPF found" -ForegroundColor Red }
+
+Write-Host "`n=== DMARC ===" -ForegroundColor Yellow
+if ($dmarcResults) { $dmarcResults | Format-List }
+else { Write-Host "No DMARC found" -ForegroundColor Red }
+
+Write-Host "`n=== DKIM ===" -ForegroundColor Yellow
+if ($dkimResults) { $dkimResults | Format-List }
+else { Write-Host "No DKIM found" -ForegroundColor Red }
+
+if ($Subdomains -and $Subdomains.Count -gt 0) {
+    Write-Host "`n=== SUBDOMAIN RECORDS ===" -ForegroundColor Yellow
+
+    if ($subdomainResults) {
+        $subdomainResults |
+            Sort-Object QueryName, RecordType, Value |
+            Format-Table QueryName, RecordType, Value -AutoSize
+    }
+    else {
+        Write-Host "No subdomain records found" -ForegroundColor Red
+    }
+}        </code></pre>
 
     </div>
 
