@@ -34,56 +34,58 @@
 
 <!-- CONTENT -->
 <section class="section">
-    <div class="card">
+    <div class="container">
+        <h1 class="section-title">Tools & Technologies</h1>
+            <div class="card">
 
-    <h3>DNS Record Query Tool (PowerShell)</h3>
+            <h3>DNS Record Query Tool (PowerShell)</h3>
 
-    <p>
-        A custom PowerShell DNS troubleshooting utility I created to quickly gather
-        DNS records for domains and subdomains in one place. I originally built this
-        tool while working in MSP environments to simplify troubleshooting and verify
-        whether clients correctly configured DNS records such as SPF, DKIM, and DMARC.
-    </p>
+            <p>
+                A custom PowerShell DNS troubleshooting utility I created to quickly gather
+                DNS records for domains and subdomains in one place. I originally built this
+                tool while working in MSP environments to simplify troubleshooting and verify
+                whether clients correctly configured DNS records such as SPF, DKIM, and DMARC.
+            </p>
 
-    <p>
-        Instead of manually querying records one-by-one, this script consolidates
-        standard DNS records, email security records, and optional subdomain lookups
-        into a single organized output. This made it significantly faster to validate
-        mail flow configurations, identify missing records, and troubleshoot DNS-related issues.
-    </p>
+            <p>
+                Instead of manually querying records one-by-one, this script consolidates
+                standard DNS records, email security records, and optional subdomain lookups
+                into a single organized output. This made it significantly faster to validate
+                mail flow configurations, identify missing records, and troubleshoot DNS-related issues.
+            </p>
 
-    <h4 style="margin-top:20px;">What The Tool Does</h4>
+            <h4 style="margin-top:20px;">What The Tool Does</h4>
 
-    <ul>
-        <li>Queries standard DNS records (A, AAAA, MX, NS, TXT, CNAME, SOA)</li>
-        <li>Checks SPF, DMARC, and DKIM records</li>
-        <li>Supports custom subdomain enumeration</li>
-        <li>Supports querying against custom DNS servers</li>
-        <li>Formats results cleanly for troubleshooting and auditing</li>
-    </ul>
+            <ul>
+                <li>Queries standard DNS records (A, AAAA, MX, NS, TXT, CNAME, SOA)</li>
+                <li>Checks SPF, DMARC, and DKIM records</li>
+                <li>Supports custom subdomain enumeration</li>
+                <li>Supports querying against custom DNS servers</li>
+                <li>Formats results cleanly for troubleshooting and auditing</li>
+            </ul>
 
-    <h4 style="margin-top:20px;">Why I Built It</h4>
+            <h4 style="margin-top:20px;">Why I Built It</h4>
 
-    <p>
-        I built this script because I frequently needed a fast way to verify whether
-        DNS records had been added correctly during migrations, email security deployments,
-        and troubleshooting scenarios. Having everything consolidated into a single
-        output reduced repetitive manual lookups and improved troubleshooting efficiency.
-    </p>
+            <p>
+                I built this script because I frequently needed a fast way to verify whether
+                DNS records had been added correctly during migrations, email security deployments,
+                and troubleshooting scenarios. Having everything consolidated into a single
+                output reduced repetitive manual lookups and improved troubleshooting efficiency.
+            </p>
 
-    <div class="button-group">
+            <div class="button-group">
 
-        <a href="downloads/Get-DnsRecords.ps1" class="btn" download>
-            Download PS1
-        </a>
+                <a href="downloads/Get-DnsRecords.ps1" class="btn" download>
+                    Download PS1
+                </a>
 
-        <a href="dns-tool-source.html" class="btn">
-            View Source Code
-        </a>
+                <a href="dns-tool-source.html" class="btn">
+                    View Source Code
+                </a>
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
 
         <div class="card">
