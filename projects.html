@@ -1,306 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Riley Bossi</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Riley Bossi</title>
 
-    :root {
-      --bg: #0f1117;
-      --surface: #161b27;
-      --border: #1e2a3a;
-      --accent: #3b82f6;
-      --accent-glow: rgba(59,130,246,0.15);
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --tag-bg: #1e2a3a;
-    }
-
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
-    }
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text);
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 4rem 2rem 2rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .hero h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* ── PROJECT GRID ── */
-    .projects {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent), 0 4px 24px var(--accent-glow);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .card h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      max-width: 580px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1rem;
-    }
-    .tag {
-      background: var(--tag-bg);
-      color: var(--accent);
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .learn-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 1.1rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: gap 0.2s;
-    }
-    .learn-more:hover { gap: 0.55rem; }
-    .learn-more svg { width: 14px; height: 14px; }
-
-    /* ── FOOTER ── */
-    footer {
-      max-width: 860px;
-      margin: 4rem auto 2rem;
-      padding: 0 2rem;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    footer p { color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--accent); text-decoration: none; }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-  <a href="https://rileybossi.github.io/index.html" class="nav-brand">Riley Bossi</a>
-  <ul class="nav-links">
-    <li><a href="https://rileybossi.github.io/index.html">Home</a></li>
-    <li><a href="https://rileybossi.github.io/current-work.html">Current Work</a></li>
-    <li><a href="projects.html" class="active">Projects</a></li>
-    <li><a href="https://rileybossi.github.io/tools.html">Tools</a></li>
-    <li><a href="https://rileybossi.github.io/certifications.html">Certifications</a></li>
-  </ul>
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">Riley Bossi</a>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="current-work.html">Current Work</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="certifications.html">Certifications</a>
+        </div>
+
+    </div>
+
 </nav>
 
-<div class="hero">
-  <h1>Projects</h1>
-  <p>Hands-on labs, builds, and experiments — with write-ups on what I learned from each.</p>
-</div>
+<!-- CONTENT -->
+<section class="section">
 
-<main class="projects">
+    <div class="container">
 
-  <!-- 1. TryHackMe SOC -->
-  <article class="card">
-    <h2>TryHackMe SOC Training Path</h2>
-    <p>Completed SOC Level 1 and SOC Level 2 pathways focused on real-world analyst workflows, SIEM analysis, incident response, and malware investigations.</p>
-    <div class="tags">
-      <span class="tag">SIEM</span>
-      <span class="tag">Splunk</span>
-      <span class="tag">ELK Stack</span>
-      <span class="tag">MITRE ATT&CK</span>
-      <span class="tag">Incident Response</span>
-      <span class="tag">Malware Analysis</span>
+        <h1 class="section-title">Projects</h1>
+
+        <div class="card">
+            <h3>TryHackMe SOC Training Path</h3>
+
+            <p>
+                Completed SOC Level 1, SOC Level 2, and the SOC Simulator.
+                Focused on real-world analyst workflows including alert triage,
+                incident response, phishing investigations, malware analysis,
+                threat intelligence, and SIEM operations.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> Splunk, ELK, MITRE ATT&CK, OpenCTI,
+                YARA, MISP, Sysmon, Wazuh, Wireshark, Snort
+            </p>
+
+            <a href="project-tryhackme-soc.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Malware Analysis Labs</h3>
+
+            <p>
+                Conducted static and dynamic malware analysis using industry tools
+                to identify malicious behaviors, persistence mechanisms, registry
+                modifications, process injection techniques, and network activity.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> Ghidra, PE Studio, PE View,
+                Process Monitor, Process Explorer, RegShot, Wireshark
+            </p>
+
+            <a href="project-malware-analysis.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>TryHackMe Junior Penetration Tester</h3>
+
+            <p>
+                Developed an attacker's mindset through hands-on offensive
+                security exercises including enumeration, exploitation,
+                privilege escalation, and post-exploitation activities.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> Nmap, Burp Suite, Metasploit,
+                Linux Privilege Escalation, Windows Privilege Escalation
+            </p>
+
+            <a href="project-junior-pentest.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>At-Home Cybersecurity Lab</h3>
+
+            <p>
+                Built a virtual enterprise-style network using pfSense,
+                Windows, Kali Linux, Snort, and VMware Fusion to practice
+                firewall configuration, VLANs, traffic analysis,
+                intrusion detection, and network troubleshooting.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> pfSense, Snort, VLANs,
+                Wireshark, VMware Fusion, Network Security
+            </p>
+
+            <a href="project-home-lab.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Microsoft Sentinel Log Ingestion Lab</h3>
+
+            <p>
+                Designed a custom Microsoft Sentinel ingestion pipeline
+                utilizing Azure Logic Apps, Blob Storage, Log Analytics,
+                and Microsoft Entra ID to simulate SIEM operations
+                across separate Azure tenants.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> Sentinel, Azure Logic Apps,
+                KQL, Entra ID, Conditional Access, MFA
+            </p>
+
+            <a href="project-sentinel.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Amazon Clone JavaScript Project</h3>
+
+            <p>
+                Developed a functional e-commerce application while learning
+                JavaScript fundamentals, DOM manipulation, APIs, local storage,
+                and web application security concepts.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> JavaScript, HTML, CSS,
+                APIs, Git, Client-Side Security
+            </p>
+
+            <a href="project-amazon-clone.html" class="btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>DNS Record Query Tool</h3>
+
+            <p>
+                Custom PowerShell utility created to automate DNS
+                troubleshooting by collecting SPF, DKIM, DMARC,
+                MX, TXT, A, AAAA, NS, CNAME, and SOA records
+                in a single report.
+            </p>
+
+            <p>
+                <strong>Skills:</strong> PowerShell, DNS,
+                Email Security, Troubleshooting
+            </p>
+
+            <a href="project-dns-tool.html" class="btn">
+                View Project
+            </a>
+        </div>
+
     </div>
-    <a href="project-tryhackme-soc.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
 
-  <!-- 2. Malware Analysis -->
-  <article class="card">
-    <h2>Malware Analysis Labs</h2>
-    <p>Observed two pieces of malware using static and dynamic analysis tools including PEID, PE View, PE Studio, Ghidra, Process Monitor, Process Explorer, RegShot, and Wireshark.</p>
-    <div class="tags">
-      <span class="tag">Static Analysis</span>
-      <span class="tag">Dynamic Analysis</span>
-      <span class="tag">Ghidra</span>
-      <span class="tag">Wireshark</span>
-      <span class="tag">Process Monitor</span>
-    </div>
-    <a href="project-malware-analysis.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
+</section>
 
-  <!-- 3. Junior Pen Tester -->
-  <article class="card">
-    <h2>TryHackMe Junior Penetration Tester</h2>
-    <p>Learned attacker methodology through enumeration, exploitation, privilege escalation, and post-exploitation exercises — translating offensive knowledge into stronger defensive instincts.</p>
-    <div class="tags">
-      <span class="tag">Nmap</span>
-      <span class="tag">Burp Suite</span>
-      <span class="tag">Metasploit</span>
-      <span class="tag">Privilege Escalation</span>
-      <span class="tag">MITRE ATT&CK</span>
-    </div>
-    <a href="project-junior-pentest.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
-
-  <!-- 4. Home Lab -->
-  <article class="card">
-    <h2>At-Home Cybersecurity Lab</h2>
-    <p>Built a virtual network environment using pfSense, Kali Linux, Snort, Wireshark, and VMware Fusion to practice firewall configuration, VLANs, and intrusion detection.</p>
-    <div class="tags">
-      <span class="tag">pfSense</span>
-      <span class="tag">Kali Linux</span>
-      <span class="tag">Snort</span>
-      <span class="tag">VMware Fusion</span>
-      <span class="tag">VLANs</span>
-      <span class="tag">Network Segmentation</span>
-    </div>
-    <a href="project-home-lab.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
-
-  <!-- 5. Sentinel -->
-  <article class="card">
-    <h2>Microsoft Sentinel Log Ingestion Lab</h2>
-    <p>Created a custom Microsoft Sentinel ingestion pipeline using Azure Logic Apps, Log Analytics, and Entra ID — bridging two tenants to simulate cross-environment SIEM log analysis.</p>
-    <div class="tags">
-      <span class="tag">Microsoft Sentinel</span>
-      <span class="tag">Azure Logic Apps</span>
-      <span class="tag">KQL</span>
-      <span class="tag">Entra ID</span>
-      <span class="tag">Log Analytics</span>
-    </div>
-    <a href="project-sentinel.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
-
-  <!-- 6. Amazon Clone -->
-  <article class="card">
-    <h2>Amazon Clone JavaScript Project</h2>
-    <p>Developed a responsive e-commerce application to strengthen frontend and JavaScript skills while learning about client-side security concepts like XSS, input validation, and local storage risks.</p>
-    <div class="tags">
-      <span class="tag">JavaScript</span>
-      <span class="tag">HTML/CSS</span>
-      <span class="tag">DOM Manipulation</span>
-      <span class="tag">Web Security</span>
-      <span class="tag">Git</span>
-    </div>
-    <a href="project-amazon-clone.html" class="learn-more">
-      Read write-up
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 8h10M9 4l4 4-4 4"/>
-      </svg>
-    </a>
-  </article>
-
-</main>
-
+<!-- FOOTER -->
 <footer>
-  <p>Riley Bossi &mdash; Cybersecurity &bull; Systems Administration &bull; IT Operations</p>
-  <p><a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+
+    <div class="container footer-content">
+
+        <div>
+            <h3>Riley Bossi</h3>
+            <p>Cybersecurity • Threat Detection • SIEM • IT Operations</p>
+        </div>
+
+        <div>
+
+            <p>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <a href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                   target="_blank">
+                    LinkedIn Profile
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
 </footer>
+
+<script>
+
+const menuBtn = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+</script>
 
 </body>
 </html>
