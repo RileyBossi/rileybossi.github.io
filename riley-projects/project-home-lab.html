@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>At-Home Cybersecurity Lab | Riley Bossi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0f1117; --surface: #161b27; --border: #1e2a3a; --accent: #3b82f6; --text: #e2e8f0; --muted: #64748b; --tag-bg: #1e2a3a; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .breadcrumb { max-width: 760px; margin: 2rem auto 0; padding: 0 2rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--muted); font-size: 0.85rem; margin: 0 0.4rem; }
+    .hero { max-width: 760px; margin: 0 auto; padding: 2rem 2rem 0; }
+    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--tag-bg); color: var(--accent); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; }
+    .content { max-width: 760px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
+    .content section { margin-bottom: 2.5rem; }
+    .content h2 { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    .content h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+    .content ul { color: var(--muted); font-size: 0.95rem; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+    .content ul li { margin-bottom: 0.4rem; }
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .callout p { color: var(--text); margin: 0; font-size: 0.92rem; }
+    .network-diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin: 1rem 0; font-family: monospace; }
+    .network-diagram pre { color: var(--muted); font-size: 0.82rem; line-height: 1.8; white-space: pre-wrap; }
+    .network-diagram .hl { color: var(--accent); }
+    .lessons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .lesson-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem; }
+    .lesson-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .lesson-card p { color: var(--muted); font-size: 0.85rem; margin: 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600; margin-bottom: 2rem; transition: gap 0.2s; }
+    .back-link:hover { gap: 0.55rem; }
+    .back-link svg { width: 14px; height: 14px; }
+    footer { max-width: 760px; margin: 0 auto 2rem; padding: 2rem 2rem 0; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rileybossi.github.io/index.html" class="nav-brand">Riley Bossi</a>
+  <ul class="nav-links">
+    <li><a href="https://rileybossi.github.io/index.html">Home</a></li>
+    <li><a href="https://rileybossi.github.io/current-work.html">Current Work</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="https://rileybossi.github.io/tools.html">Tools</a></li>
+    <li><a href="https://rileybossi.github.io/certifications.html">Certifications</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="projects.html">Projects</a>
+  <span>/</span>
+  <span>At-Home Cybersecurity Lab</span>
+</div>
+
+<div class="hero">
+  <h1>At-Home Cybersecurity Lab</h1>
+  <div class="hero-meta">
+    <span class="tag">pfSense</span>
+    <span class="tag">Kali Linux</span>
+    <span class="tag">Snort</span>
+    <span class="tag">VMware Fusion</span>
+    <span class="tag">VLANs</span>
+    <span class="tag">Wireshark</span>
+    <span class="tag">pfBlockerNG</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <a href="projects.html" class="back-link">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 8H3M7 4L3 8l4 4"/>
+    </svg>
+    Back to Projects
+  </a>
+
+  <section>
+    <h2>Overview</h2>
+    <p>I built a virtual network lab on my Mac using VMware Fusion to practice real-world network security skills — firewall configuration, VLAN segmentation, intrusion detection, and traffic analysis — in a controlled environment where I could break things freely and learn from it.</p>
+    <div class="callout">
+      <p>There's no substitute for hands-on experience. Reading about pfSense firewall rules is very different from staring at a rule set that's blocking traffic you expect to flow, tracing the packet, and figuring out exactly why. This lab gave me that.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lab Architecture</h2>
+    <div class="network-diagram">
+      <pre>
+<span class="hl">Host:</span>       macOS (VMware Fusion)
+<span class="hl">Bridging:</span>   Wi-Fi interface → virtual switch
+
+<span class="hl">WAN:</span>        192.168.1.0/24   (simulated external network)
+<span class="hl">LAN:</span>        192.168.2.0/24   (internal endpoints)
+<span class="hl">VLAN:</span>       192.168.10.0/24  (isolated segment)
+
+<span class="hl">VMs:</span>
+  pfSense      — firewall, DHCP server, IDS (Snort)
+  Windows 10   — two VMs simulating endpoint behavior
+  Kali Linux   — attacker / analyst machine
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I Built & Practiced</h2>
+    <h3>Firewall Configuration (pfSense)</h3>
+    <ul>
+      <li>Configured interface assignments for WAN, LAN, and VLAN</li>
+      <li>Built and tested firewall rules controlling inter-segment traffic</li>
+      <li>Set up DHCP server with static mappings for VMs</li>
+      <li>Deployed pfBlockerNG for DNS-based ad and threat blocking</li>
+    </ul>
+
+    <h3>Network Segmentation (VLANs)</h3>
+    <ul>
+      <li>Created a VLAN (192.168.10.0/24) to isolate a VM from the main LAN</li>
+      <li>Wrote inter-VLAN routing rules in pfSense to control what could communicate with what</li>
+      <li>Verified isolation by attempting ICMP and TCP connections across segments</li>
+    </ul>
+
+    <h3>Intrusion Detection (Snort)</h3>
+    <ul>
+      <li>Deployed Snort as an inline IDS on pfSense</li>
+      <li>Configured rule sets and tuned alerting thresholds to reduce false positives</li>
+      <li>Triggered alerts using Nmap scans from Kali and verified detection</li>
+      <li>Analyzed Snort alerts and correlated them with packet captures</li>
+    </ul>
+
+    <h3>Traffic Analysis (Wireshark)</h3>
+    <ul>
+      <li>Used pfSense's built-in packet capture to grab traffic at the firewall level</li>
+      <li>Opened captures in Wireshark for deep packet inspection</li>
+      <li>Analyzed ICMP, DNS, and TCP handshakes to troubleshoot connectivity issues</li>
+      <li>Identified the exact point in the network path where traffic was being dropped</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Key Takeaways</h2>
+    <div class="lessons">
+      <div class="lesson-card">
+        <h4>Firewalls need tuning, not just enabling</h4>
+        <p>A default deny policy sounds great until legitimate traffic breaks. Learning to trace packet flow and identify which rule was responsible changed how I think about firewall management.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>VLANs are a first-class security control</h4>
+        <p>Segmenting the network and controlling inter-VLAN routing dramatically reduces lateral movement potential. Flat networks are dangerous — this lab made that viscerally clear.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>IDS alerts need context</h4>
+        <p>Snort generated a lot of noise until I tuned the rules. Learning to distinguish a scan from a real attack — and to correlate the alert with the packet capture — is the core analyst skill.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>Bridging virtual and physical networks is tricky</h4>
+        <p>Getting VMware Fusion to bridge over Wi-Fi (not Ethernet) surfaced a lot of edge cases around ARP, DHCP, and MAC address handling that don't show up in tutorials.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Riley Bossi &mdash; Cybersecurity &bull; Systems Administration &bull; IT Operations</p>
+  <p><a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>

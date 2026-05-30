@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TryHackMe SOC Training Path | Riley Bossi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1117; --surface: #161b27; --border: #1e2a3a;
+      --accent: #3b82f6; --accent-glow: rgba(59,130,246,0.15);
+      --text: #e2e8f0; --muted: #64748b; --tag-bg: #1e2a3a;
+      --green: #22c55e; --yellow: #eab308;
+    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .breadcrumb { max-width: 760px; margin: 2rem auto 0; padding: 0 2rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--muted); font-size: 0.85rem; margin: 0 0.4rem; }
+
+    .hero { max-width: 760px; margin: 0 auto; padding: 2rem 2rem 0; }
+    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--tag-bg); color: var(--accent); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; }
+
+    .content { max-width: 760px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
+    .content section { margin-bottom: 2.5rem; }
+    .content h2 { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    .content h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+    .content ul { color: var(--muted); font-size: 0.95rem; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+    .content ul li { margin-bottom: 0.4rem; }
+
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .callout p { color: var(--text); margin: 0; font-size: 0.92rem; }
+
+    .lessons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .lesson-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem; }
+    .lesson-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .lesson-card p { color: var(--muted); font-size: 0.85rem; margin: 0; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600; margin-bottom: 2rem; transition: gap 0.2s; }
+    .back-link:hover { gap: 0.55rem; }
+    .back-link svg { width: 14px; height: 14px; }
+
+    footer { max-width: 760px; margin: 0 auto 2rem; padding: 2rem 2rem 0; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rileybossi.github.io/index.html" class="nav-brand">Riley Bossi</a>
+  <ul class="nav-links">
+    <li><a href="https://rileybossi.github.io/index.html">Home</a></li>
+    <li><a href="https://rileybossi.github.io/current-work.html">Current Work</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="https://rileybossi.github.io/tools.html">Tools</a></li>
+    <li><a href="https://rileybossi.github.io/certifications.html">Certifications</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="projects.html">Projects</a>
+  <span>/</span>
+  <span>TryHackMe SOC Training Path</span>
+</div>
+
+<div class="hero">
+  <h1>TryHackMe SOC Training Path</h1>
+  <div class="hero-meta">
+    <span class="tag">SOC Operations</span>
+    <span class="tag">SIEM</span>
+    <span class="tag">Splunk</span>
+    <span class="tag">ELK Stack</span>
+    <span class="tag">MITRE ATT&CK</span>
+    <span class="tag">Malware Analysis</span>
+    <span class="tag">Incident Response</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <a href="projects.html" class="back-link">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 8H3M7 4L3 8l4 4"/>
+    </svg>
+    Back to Projects
+  </a>
+
+  <section>
+    <h2>Overview</h2>
+    <p>I completed TryHackMe's SOC Level 1 and SOC Level 2 learning pathways, including their SOC Simulator — a feature that places you inside a simulated security operations center where you triage live alerts, investigate incidents, and write case reports. This was one of the most structured and hands-on cybersecurity training experiences I've done.</p>
+    <div class="callout">
+      <p>The SOC Simulator stood out because it replicated the pressure of real analyst work — alerts keep coming, context matters, and you have to make triage decisions quickly without all the information you'd like to have.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I Worked On</h2>
+    <h3>SOC Level 1 — Foundational Analyst Skills</h3>
+    <ul>
+      <li>Alert triage workflows, escalation paths, and SOC operating procedures</li>
+      <li>Phishing analysis using tools like PhishTool, any.run, Hybrid Analysis, Talos, and Messageheader</li>
+      <li>Network traffic analysis with Wireshark, Brim, and Snort</li>
+      <li>SIEM log correlation using Splunk and the ELK Stack</li>
+      <li>Endpoint monitoring with Sysmon, Wazuh, and Windows Event Logs</li>
+      <li>Cyber threat intelligence with OpenCTI, YARA, and MISP</li>
+      <li>MITRE ATT&CK framework mapping for threat actor behavior</li>
+    </ul>
+    <h3>SOC Level 2 — Advanced Detection & Response</h3>
+    <ul>
+      <li>Malware analysis fundamentals: PE header inspection, static and dynamic analysis</li>
+      <li>Detection of living-off-the-land (LOTL) techniques and lateral movement</li>
+      <li>Identifying persistence mechanisms from log data</li>
+      <li>Writing structured incident reports with IOCs, timelines, and recommendations</li>
+    </ul>
+    <h3>SOC Simulator — Hands-On Alert Triage</h3>
+    <ul>
+      <li>Monitored live simulated alert queues and prioritized incidents by severity</li>
+      <li>Identified PowerShell execution events, reverse shell connections, and suspicious DNS</li>
+      <li>Investigated a phishing scenario involving a <code>.LNK</code> file masquerading as a PDF that downloaded a PowerShell payload from GitHub and established a reverse shell</li>
+      <li>Produced full case reports documenting the attack chain, IOCs, and mitigations</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Key Takeaways</h2>
+    <div class="lessons">
+      <div class="lesson-card">
+        <h4>Context over alerts</h4>
+        <p>A single alert means little. Correlating PowerShell execution, authentication anomalies, and DNS requests is what turns noise into a real incident.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>Attacker TTPs beat signatures</h4>
+        <p>Mapping behavior to MITRE ATT&CK helps detect novel threats. Signatures catch known malware; TTPs catch attacker intent regardless of the payload.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>Phishing is still king</h4>
+        <p>The .LNK phishing investigation showed how a convincingly-named file, a short PowerShell cradle, and a public repo can bypass basic defenses entirely.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>Write everything down</h4>
+        <p>The simulator's case report requirement reinforced that documentation isn't optional — it enables escalation, handoff, and post-incident review.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How This Applies to Real Work</h2>
+    <p>Much of what I practiced in these labs directly mirrors what I do day-to-day at my MSP. Investigating phishing emails, analyzing PowerShell commands via RMM, correlating alerts from our MSSP-provided SIEM — all of that maps back to techniques and mindsets I built through this pathway. The SOC Simulator in particular prepared me to stay calm and methodical under alert pressure rather than chasing every event reactively.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>Riley Bossi &mdash; Cybersecurity &bull; Systems Administration &bull; IT Operations</p>
+  <p><a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
