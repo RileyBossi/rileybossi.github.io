@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon Clone JavaScript Project | Riley Bossi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0f1117; --surface: #161b27; --border: #1e2a3a; --accent: #3b82f6; --text: #e2e8f0; --muted: #64748b; --tag-bg: #1e2a3a; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .breadcrumb { max-width: 760px; margin: 2rem auto 0; padding: 0 2rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--muted); font-size: 0.85rem; margin: 0 0.4rem; }
+    .hero { max-width: 760px; margin: 0 auto; padding: 2rem 2rem 0; }
+    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--tag-bg); color: var(--accent); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; }
+    .content { max-width: 760px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
+    .content section { margin-bottom: 2.5rem; }
+    .content h2 { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    .content h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
+    .content ul { color: var(--muted); font-size: 0.95rem; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+    .content ul li { margin-bottom: 0.4rem; }
+    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .callout p { color: var(--text); margin: 0; font-size: 0.92rem; }
+    .demo-link { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.55rem 1.1rem; border-radius: 6px; text-decoration: none; font-size: 0.88rem; font-weight: 600; margin: 0.75rem 0; transition: opacity 0.2s; }
+    .demo-link:hover { opacity: 0.85; }
+    .lessons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .lesson-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem; }
+    .lesson-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .lesson-card p { color: var(--muted); font-size: 0.85rem; margin: 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600; margin-bottom: 2rem; transition: gap 0.2s; }
+    .back-link:hover { gap: 0.55rem; }
+    .back-link svg { width: 14px; height: 14px; }
+    footer { max-width: 760px; margin: 0 auto 2rem; padding: 2rem 2rem 0; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://rileybossi.github.io/index.html" class="nav-brand">Riley Bossi</a>
+  <ul class="nav-links">
+    <li><a href="https://rileybossi.github.io/index.html">Home</a></li>
+    <li><a href="https://rileybossi.github.io/current-work.html">Current Work</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="https://rileybossi.github.io/tools.html">Tools</a></li>
+    <li><a href="https://rileybossi.github.io/certifications.html">Certifications</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <a href="projects.html">Projects</a>
+  <span>/</span>
+  <span>Amazon Clone JavaScript Project</span>
+</div>
+
+<div class="hero">
+  <h1>Amazon Clone JavaScript Project</h1>
+  <div class="hero-meta">
+    <span class="tag">JavaScript</span>
+    <span class="tag">HTML/CSS</span>
+    <span class="tag">DOM Manipulation</span>
+    <span class="tag">Local Storage</span>
+    <span class="tag">Web Security</span>
+    <span class="tag">Git</span>
+    <span class="tag">APIs</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <a href="projects.html" class="back-link">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 8H3M7 4L3 8l4 4"/>
+    </svg>
+    Back to Projects
+  </a>
+
+  <section>
+    <h2>Why This Project</h2>
+    <p>My programming background was primarily Java, Python, SQL, and Assembly Language with some HTML and CSS. I knew I needed to understand JavaScript — not just to code, but because JavaScript is the primary attack surface of the modern web. DOM-based XSS, prototype pollution, insecure deserialization, and client-side logic flaws all require deep JavaScript knowledge to both execute and defend against.</p>
+    <div class="callout">
+      <p>The best way to understand how something can be abused is to build it. Building a full e-commerce application from scratch exposed me to the exact patterns attackers look for: where input is accepted, where data is stored, and where trust decisions are made.</p>
+    </div>
+    <a href="https://rileybossi.github.io/amazon-project/javascript-amazon-project-main/amazon.html" target="_blank" class="demo-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h4v4M13 3l-7 7M6 4H3v9h9v-3"/></svg>
+      View Live Project
+    </a>
+  </section>
+
+  <section>
+    <h2>What I Built</h2>
+    <ul>
+      <li>Dynamic product catalog loaded from a JavaScript data structure, rendered to the DOM with event-driven programming</li>
+      <li>Real-time cart management — adding, updating, and removing items with live UI updates</li>
+      <li>Local storage implementation for cart persistence across page reloads</li>
+      <li>Multi-page checkout workflow with order processing and confirmation</li>
+      <li>Responsive design across all pages</li>
+      <li>Version control with Git throughout the project</li>
+      <li>Basic API integration</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Security-Focused Observations</h2>
+    <h3>Client-Side Trust is Dangerous</h3>
+    <p>Building the cart and checkout logic entirely in JavaScript made it immediately obvious how easily a user can manipulate prices, quantities, and product IDs directly in the browser console or through DevTools. Any server receiving this data without revalidating it server-side is wide open.</p>
+
+    <h3>DOM-Based XSS Surface</h3>
+    <p>Every time I rendered user-controlled data into the DOM (product names, quantities, form inputs), I was creating a potential XSS injection point. Implementing it without a framework like React meant there were no built-in escaping protections — you had to think about it explicitly every time.</p>
+
+    <h3>Local Storage Risks</h3>
+    <p>Storing cart data in localStorage was convenient, but it's accessible to any JavaScript running on the page. If the site were vulnerable to XSS, an attacker could read or manipulate stored cart state. Storing session tokens or sensitive data there would be even more dangerous.</p>
+
+    <h3>Code Readability as an Attack Surface</h3>
+    <p>Writing the application from scratch gave me a clear sense of how attackers reverse-engineer JavaScript. Variable names, function structures, API endpoint patterns, and business logic are all visible in client-side code. Obfuscation helps marginally but determined attackers can still map out the attack surface.</p>
+  </section>
+
+  <section>
+    <h2>Key Takeaways</h2>
+    <div class="lessons">
+      <div class="lesson-card">
+        <h4>Never trust client-side input</h4>
+        <p>Every input in this project was potentially attacker-controlled. The takeaway for defense: always validate and sanitize server-side, regardless of what client-side controls you've built.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>JS builds security intuition</h4>
+        <p>Understanding how JavaScript executes, how the DOM works, and how data flows through a web app makes reading vulnerability reports and pen test findings much more concrete.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>The attack surface is everywhere</h4>
+        <p>Price fields, quantity inputs, product IDs, URL parameters — every one of these is a potential injection point or business logic flaw waiting to be found.</p>
+      </div>
+      <div class="lesson-card">
+        <h4>Frontend and backend security are connected</h4>
+        <p>Seeing how client-side logic makes API calls reinforced that web app security can't be thought of as frontend vs. backend — the entire request/response chain has to be considered together.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Riley Bossi &mdash; Cybersecurity &bull; Systems Administration &bull; IT Operations</p>
+  <p><a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
