@@ -273,3 +273,47 @@ footer {
         flex-direction: column;
     }
 }
+/* =========================
+   PROJECT PAGES
+========================= */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tag {
+    background: rgba(85, 194, 255, 0.12);
+    color: #55c2ff;
+    border: 1px solid rgba(85, 194, 255, 0.3);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.card h1 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.card h2 {
+    color: #55c2ff;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.back-button {
+    margin-bottom: 25px;
+}
+
+.active {
+    color: #55c2ff !important;
+}
