@@ -1,181 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Microsoft Sentinel Lab | Riley Bossi</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0f1117; --surface: #161b27; --border: #1e2a3a; --accent: #3b82f6; --text: #e2e8f0; --muted: #64748b; --tag-bg: #1e2a3a; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
-    .nav-brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    .breadcrumb { max-width: 760px; margin: 2rem auto 0; padding: 0 2rem; }
-    .breadcrumb a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
-    .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb span { color: var(--muted); font-size: 0.85rem; margin: 0 0.4rem; }
-    .hero { max-width: 760px; margin: 0 auto; padding: 2rem 2rem 0; }
-    .hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .tag { background: var(--tag-bg); color: var(--accent); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; }
-    .content { max-width: 760px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
-    .content section { margin-bottom: 2.5rem; }
-    .content h2 { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
-    .content h3 { font-size: 1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
-    .content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.75rem; }
-    .content ul { color: var(--muted); font-size: 0.95rem; padding-left: 1.25rem; margin-bottom: 0.75rem; }
-    .content ul li { margin-bottom: 0.4rem; }
-    .callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
-    .callout p { color: var(--text); margin: 0; font-size: 0.92rem; }
-    .flow { display: flex; flex-wrap: wrap; gap: 0; margin: 1.25rem 0; align-items: center; }
-    .flow-step { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.83rem; color: var(--text); text-align: center; min-width: 120px; flex: 1; }
-    .flow-arrow { color: var(--accent); font-size: 1.1rem; padding: 0 0.4rem; flex-shrink: 0; }
-    .lessons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-    .lesson-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem 1.25rem; }
-    .lesson-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
-    .lesson-card p { color: var(--muted); font-size: 0.85rem; margin: 0; }
-    .back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600; margin-bottom: 2rem; transition: gap 0.2s; }
-    .back-link:hover { gap: 0.55rem; }
-    .back-link svg { width: 14px; height: 14px; }
-    footer { max-width: 760px; margin: 0 auto 2rem; padding: 2rem 2rem 0; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-    footer p { color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--accent); text-decoration: none; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sentinel Lab | Riley Bossi</title>
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
 <nav>
+<div class="container nav-container">
+<a href="../index.html" class="logo">Riley Bossi</a>
+<div class="menu-toggle"><span></span><span></span><span></span></div>
 
-    <div class="container nav-container">
-
-        <a href="index.html" class="logo">Riley Bossi</a>
-
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="current-work.html">Current Work</a>
-            <a href="projects.html">Projects</a>
-            <a href="tools.html">Tools</a>
-            <a href="certifications.html">Certifications</a>
-        </div>
-
-    </div>
-
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../current-work.html">Current Work</a>
+<a href="../projects.html">Projects</a>
+<a href="../tools.html">Tools</a>
+<a href="../certifications.html">Certifications</a>
+</div>
+</div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="projects.html">Projects</a>
-  <span>/</span>
-  <span>Microsoft Sentinel Log Ingestion Lab</span>
+<div class="container section">
+
+<h1 class="section-title">Microsoft Sentinel Lab</h1>
+
+<div class="card">
+<p>
+Built a cross-tenant SIEM ingestion pipeline using Azure Logic Apps, Log Analytics, and Entra ID logs.
+</p>
 </div>
 
-<div class="hero">
-  <h1>Microsoft Sentinel Log Ingestion Lab</h1>
-  <div class="hero-meta">
-    <span class="tag">Microsoft Sentinel</span>
-    <span class="tag">Azure Logic Apps</span>
-    <span class="tag">KQL</span>
-    <span class="tag">Entra ID</span>
-    <span class="tag">Log Analytics</span>
-    <span class="tag">Conditional Access</span>
-    <span class="tag">Identity Protection</span>
-  </div>
+<div class="card">
+<h3>Skills</h3>
+<ul>
+<li>KQL querying</li>
+<li>Log ingestion pipelines</li>
+<li>Azure Logic Apps automation</li>
+<li>Identity monitoring (Entra ID)</li>
+</ul>
 </div>
 
-<div class="content">
-
-  <a href="projects.html" class="back-link">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M13 8H3M7 4L3 8l4 4"/>
-    </svg>
-    Back to Projects
-  </a>
-
-  <section>
-    <h2>The Problem I Had to Solve</h2>
-    <p>Microsoft Sentinel was only available to me through my school's Azure tenant, where I had limited permissions. Full admin access to Microsoft Entra ID was only available in my personal test tenant. These two tenants couldn't be connected directly — so I had to engineer a solution that bridged them using Azure-native services.</p>
-    <div class="callout">
-      <p>This constraint turned out to be the most educational part of the project. Real enterprise environments are messy — data lives in different places, permissions are limited, and you have to work with what you have. Solving that puzzle with Logic Apps and blob storage gave me practical experience with cloud automation I wouldn't have gotten from a clean tutorial.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Identity Environment (Personal Entra Tenant)</h2>
-    <p>Before worrying about Sentinel, I built a realistic identity environment to generate meaningful log data:</p>
-    <ul>
-      <li>Created multiple test users with different roles: Global Reader, User Administrator</li>
-      <li>Organized users into security groups: Finance, IT, Sales, HR</li>
-      <li>Enabled per-user MFA and Conditional Access policy-based MFA</li>
-      <li>Created Conditional Access policies to enforce MFA from outside the US and block legacy authentication clients</li>
-      <li>Enabled Identity Protection risk policies (user risk and sign-in risk)</li>
-      <li>Simulated sign-ins, risky behavior, and policy triggers to generate audit and sign-in log activity</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Log Ingestion Pipeline</h2>
-    <p>With Sentinel unavailable in my personal tenant, I built a cross-tenant ingestion pipeline using blob storage as the bridge:</p>
-
-    <div class="flow">
-      <div class="flow-step">Entra Sign-in Logs</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">Export as .csv</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">Azure Blob Storage</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">Logic App (scheduled)</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">Log Analytics (EntraLog_CL)</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-step">Microsoft Sentinel</div>
-    </div>
-
-    <h3>Step-by-step</h3>
-    <ul>
-      <li>Exported Entra sign-in logs as a CSV from the personal test tenant</li>
-      <li>Created an Azure Storage Account and private blob container in the school tenant</li>
-      <li>Uploaded the log file to blob storage</li>
-      <li>Deployed a Logic App with a scheduled trigger that reads and parses each row from the CSV</li>
-      <li>Configured the Logic App to send each log entry to a custom Log Analytics table (<code>EntraLog_CL</code>) linked to Microsoft Sentinel</li>
-      <li>Verified ingestion by querying <code>EntraLog_CL</code> in Sentinel's Log Analytics workspace with KQL</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Key Takeaways</h2>
-    <div class="lessons">
-      <div class="lesson-card">
-        <h4>Constraints drive creativity</h4>
-        <p>Not having a direct tenant connection forced me to learn Logic Apps, blob storage, and custom log tables — tools I wouldn't have touched in a simpler setup. The workaround became the most valuable part.</p>
-      </div>
-      <div class="lesson-card">
-        <h4>Conditional Access is powerful and nuanced</h4>
-        <p>Building and testing CA policies myself — blocking legacy auth, requiring MFA from abroad — made the tradeoffs between security and usability concrete in a way reading documentation doesn't.</p>
-      </div>
-      <div class="lesson-card">
-        <h4>Custom log tables need careful schema design</h4>
-        <p>Ingesting CSV data into a custom table required thinking carefully about field names, types, and how KQL would query them later. Garbage in, garbage out applies to SIEMs especially.</p>
-      </div>
-      <div class="lesson-card">
-        <h4>Identity logs are rich with signal</h4>
-        <p>Entra sign-in logs include location, device, risk score, CA result, and more. Querying these with KQL to find anomalous sign-ins gave me a clear sense of why identity logs are so valuable to defenders.</p>
-      </div>
-    </div>
-  </section>
+<div class="card">
+<h3>Impact</h3>
+<ul>
+<li>Simulated enterprise SOC workflows</li>
+<li>Built cross-tenant log ingestion system</li>
+<li>Improved identity monitoring visibility</li>
+</ul>
+</div>
 
 </div>
 
 <footer>
-  <p>Riley Bossi &mdash; Cybersecurity &bull; Systems Administration &bull; IT Operations</p>
-  <p><a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+<div class="container footer-content">
+<div><h3>Riley Bossi</h3><p>Cybersecurity • IT • Systems</p></div>
+<div>
+<p>Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a></p>
+<p><a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+</div>
+</div>
 </footer>
 
 </body>
