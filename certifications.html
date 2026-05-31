@@ -3,179 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications | Riley Bossi</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>TryHackMe Junior Penetration Tester | Riley Bossi</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-
     <div class="container nav-container">
-
-        <a href="index.html" class="logo">Riley Bossi</a>
-
+        <a href="../index.html" class="logo">Riley Bossi</a>
         <div class="menu-toggle" id="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
         <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="current-work.html">Current Work</a>
-            <a href="projects.html">Projects</a>
-            <a href="tools.html">Tools</a>
-            <a href="certifications.html">Certifications</a>
+            <a href="../index.html">Home</a>
+            <a href="../current-work.html">Current Work</a>
+            <a href="../projects.html" class="active">Projects</a>
+            <a href="../tools.html">Tools</a>
+            <a href="../certifications.html">Certifications</a>
         </div>
-
     </div>
-
 </nav>
-
-<!-- CONTENT -->
 <section class="section">
-
     <div class="container">
-
-        <h1 class="section-title">Certifications</h1>
-
+        <a href="../projects.html" class="btn">
+            ← Back to Projects
+        </a>
         <div class="card">
-
-            <h3>CompTIA CySA+</h3>
-
+            <h1>TryHackMe Junior Penetration Tester</h1>
             <p>
-                Focused on threat detection, SIEM analysis, vulnerability management,
-                and incident response.
+                Completed hands-on modules from TryHackMe's Junior Penetration Tester pathway to better understand attacker methodology and translate offensive techniques into stronger defensive controls.
             </p>
-
-            <p>
-                What sets this apart is my hands-on reinforcement through
-                TryHackMe SOC Level 1 and SOC Level 2 labs, where I performed:
-            </p>
-
-            <ul>
-                <li>Real-time alert triage and escalation</li>
-                <li>Phishing investigation and IOC analysis</li>
-                <li>Malware behavior analysis</li>
-                <li>SIEM correlation using Splunk and ELK</li>
-                <li>Network traffic analysis with Wireshark</li>
-            </ul>
-
+            <div class="tags">
+                <span class="tag">Nmap</span>
+                <span class="tag">Burp Suite</span>
+                <span class="tag">Metasploit</span>
+                <span class="tag">Privilege Escalation</span>
+                <span class="tag">MITRE ATT&CK</span>
+                <span class="tag">Web Security</span>
+            </div>
         </div>
-
         <div class="card">
-
-            <h3>CompTIA Security+</h3>
-
+            <h2>Objective</h2>
             <p>
-                Built a strong foundation in cybersecurity principles including:
+                My primary focus is defensive security, but I believe defenders are strongest when they understand how attackers think. The goal of this pathway was not simply to learn offensive tools, but to understand the complete attack lifecycle so I could better identify, investigate, and prevent real-world attacks.
             </p>
-
-            <ul>
-                <li>Network security fundamentals</li>
-                <li>Identity and access management</li>
-                <li>Risk management and mitigation</li>
-                <li>Cryptography basics</li>
-                <li>Secure architecture design</li>
-            </ul>
-
+            <p>
+                By walking through the same techniques used by threat actors, I gained valuable insight into attacker behavior, common weaknesses in enterprise environments, and the artifacts left behind during exploitation.
+            </p>
         </div>
-
         <div class="card">
-
-            <h3>CompTIA Network+</h3>
-
-            <p>
-                Developed deep understanding of networking concepts including:
-            </p>
-
+            <h2>Skills & Tools Used</h2>
             <ul>
-                <li>Routing and switching</li>
-                <li>DNS, DHCP, and IP addressing</li>
-                <li>Subnetting and VLAN design</li>
-                <li>Network troubleshooting</li>
-                <li>Infrastructure fundamentals</li>
+                <li>Network and service enumeration using Nmap</li>
+                <li>Web application testing with Burp Suite</li>
+                <li>Controlled exploitation using Metasploit</li>
+                <li>Linux privilege escalation techniques</li>
+                <li>Windows privilege escalation techniques</li>
+                <li>Credential abuse and misconfiguration analysis</li>
+                <li>Mapping attacker activity to MITRE ATT&CK</li>
+                <li>Attack chain documentation and reporting</li>
             </ul>
-
         </div>
-
         <div class="card">
-
-            <h3>Microsoft SC-900</h3>
-
+            <h2>Attack Lifecycle Covered</h2>
+            <h3>Reconnaissance</h3>
             <p>
-                Covered Microsoft security, compliance, identity,
-                and Zero Trust principles including:
+                Learned how attackers gather information about target organizations through passive and active discovery techniques.
             </p>
-
-            <ul>
-                <li>Microsoft Entra ID (Azure AD)</li>
-                <li>Conditional Access policies</li>
-                <li>MFA enforcement</li>
-                <li>Security posture management</li>
-            </ul>
-
+            <h3>Enumeration</h3>
+            <p>
+                Used Nmap and service enumeration techniques to identify exposed services, operating systems, and potential attack vectors.
+            </p>
+            <h3>Exploitation</h3>
+            <p>
+                Practiced exploiting intentionally vulnerable systems using Metasploit and web application testing techniques through Burp Suite.
+            </p>
+            <h3>Privilege Escalation</h3>
+            <p>
+                Explored Linux and Windows privilege escalation paths including SUID binaries, weak permissions, service misconfigurations, and credential abuse.
+            </p>
+            <h3>Post-Exploitation</h3>
+            <p>
+                Studied persistence mechanisms, lateral movement concepts, and attacker objectives after gaining initial access.
+            </p>
         </div>
-
         <div class="card">
-
-            <h3>Google Cybersecurity Professional Certificate</h3>
-
-            <p>
-                Strengthened practical cybersecurity skills in:
-            </p>
-
+            <h2>Hands-On Experience</h2>
             <ul>
-                <li>Linux system administration</li>
-                <li>SQL querying for security analysis</li>
-                <li>SIEM fundamentals</li>
-                <li>Threat detection workflows</li>
-                <li>Incident response basics</li>
+                <li>Executed end-to-end attack simulations</li>
+                <li>Identified exposed services and weak configurations</li>
+                <li>Performed web application testing exercises</li>
+                <li>Practiced privilege escalation in Windows and Linux environments</li>
+                <li>Documented attack chains and findings</li>
+                <li>Created defensive recommendations to reduce attack surface</li>
+                <li>Mapped observed activity to MITRE ATT&CK techniques</li>
             </ul>
-
         </div>
-
+        <div class="card">
+            <h2>What I Learned</h2>
+            <p>
+                One of the biggest lessons from this project was that most successful compromises do not require advanced exploits. Weak credentials, excessive privileges, and poor configuration management are often enough for attackers to gain access and move through an environment.
+            </p>
+            <p>
+                Enumeration is frequently the most important phase of an attack because it uncovers weaknesses defenders can proactively fix. Understanding how attackers discover and prioritize targets has helped me improve my ability to identify risks before they become incidents.
+            </p>
+            <p>
+                This project also strengthened my understanding of how offensive activity appears from a defender's perspective. Knowing what reconnaissance, exploitation, and privilege escalation look like in logs makes it easier to investigate alerts and distinguish legitimate activity from malicious behavior.
+            </p>
+        </div>
     </div>
-
 </section>
-
-<!-- FOOTER -->
 <footer>
-
     <div class="container footer-content">
-
         <div>
             <h3>Riley Bossi</h3>
             <p>Cybersecurity • Systems Administration • IT Operations</p>
         </div>
-
         <div>
             <p>
-                Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
             </p>
-
             <p>
-                <a href="https://www.linkedin.com/in/riley-bossi-b08729295?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">
+                <a href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                   target="_blank">
                     LinkedIn Profile
                 </a>
             </p>
         </div>
-
     </div>
-
 </footer>
-
-<!-- SCRIPT -->
 <script>
 const menuBtn = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
-
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+if(menuBtn){
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
 </script>
-
 </body>
 </html>
