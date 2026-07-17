@@ -1,17 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Home Lab | Riley Bossi</title>
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Home Cybersecurity Lab | Riley Bossi</title>
+
+    <meta
+        name="description"
+        content="A virtual cybersecurity home lab built with pfSense, Snort, Kali Linux, Windows virtual machines, VMware Fusion, and Wireshark."
+    >
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .project-page {
+            padding: 45px 0 80px;
+        }
+
+        .back-button {
+            margin-bottom: 25px;
+        }
+
+        .project-hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            padding: 40px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(85, 194, 255, 0.13),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #16212d,
+                    #0d151d
+                );
+            border: 1px solid #22303d;
+            border-radius: 16px;
+        }
+
+        .project-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(
+                90deg,
+                #55c2ff,
+                transparent
+            );
+        }
+
+        .project-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #55c2ff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .project-hero h1 {
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+        }
+
+        .project-description {
+            max-width: 800px;
+            margin-bottom: 24px;
+            color: #aebfce;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .project-hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .project-hero .tag {
+            padding: 7px 12px;
+            background: rgba(85, 194, 255, 0.08);
+            border: 1px solid rgba(85, 194, 255, 0.25);
+            border-radius: 999px;
+            color: #8edaff;
+            font-size: 0.8rem;
+        }
+
+        .project-card {
+            margin-bottom: 24px;
+            padding: 30px;
+            background: linear-gradient(
+                145deg,
+                rgba(20, 30, 41, 0.98),
+                rgba(13, 21, 29, 0.98)
+            );
+            border: 1px solid #22303d;
+            border-radius: 14px;
+        }
+
+        .project-card h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 1.55rem;
+        }
+
+        .project-card h3 {
+            margin: 22px 0 9px;
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .project-card p {
+            margin-bottom: 14px;
+            color: #b8c9d6;
+            line-height: 1.75;
+        }
+
+        .project-card ul {
+            margin: 12px 0 0 20px;
+            color: #d3e0e9;
+        }
+
+        .project-card li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .project-card li::marker {
+            color: #55c2ff;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                4,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            padding: 19px;
+            background: rgba(85, 194, 255, 0.04);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .summary-item span {
+            display: block;
+            margin-bottom: 7px;
+            color: #7f95a7;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .summary-item strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .architecture {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr);
+            gap: 13px;
+            align-items: center;
+            margin-top: 22px;
+        }
+
+        .architecture-item {
+            min-height: 125px;
+            padding: 20px;
+            background: rgba(85, 194, 255, 0.05);
+            border: 1px solid rgba(85, 194, 255, 0.22);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .architecture-item span {
+            display: block;
+            margin-bottom: 8px;
+            color: #55c2ff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .architecture-item strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #ffffff;
+        }
+
+        .architecture-item p {
+            margin: 0;
+            color: #92a6b6;
+            font-size: 0.83rem;
+            line-height: 1.5;
+        }
+
+        .architecture-arrow {
+            color: #55c2ff;
+            font-size: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .skill-item h3 {
+            margin: 0 0 7px;
+            color: #55c2ff;
+            font-size: 1rem;
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 850px) {
+            .summary-grid {
+                grid-template-columns: repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+            }
+
+            .architecture {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture-arrow {
+                transform: rotate(90deg);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .project-page {
+                padding-top: 30px;
+                padding-bottom: 55px;
+            }
+
+            .project-hero,
+            .project-card {
+                padding: 23px;
+                border-radius: 11px;
+            }
+
+            .summary-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <nav>
     <div class="container nav-container">
 
-        <a href="index.html" class="logo">Riley Bossi</a>
+        <a href="../index.html" class="logo">
+            Riley Bossi
+        </a>
 
         <button
             class="menu-toggle"
@@ -29,7 +318,7 @@
         <div class="nav-links" id="nav-links">
             <a href="../index.html">Home</a>
             <a href="../current-work.html">Current Work</a>
-            <a href="../projects.html">Projects</a>
+            <a href="../projects.html" class="active">Projects</a>
             <a href="../tools.html">Tools</a>
             <a href="../certifications.html">Certifications</a>
         </div>
@@ -37,63 +326,439 @@
     </div>
 </nav>
 
-<div class="container section">
+<main class="project-page">
 
-<h1 class="section-title">At-Home Cybersecurity Lab</h1>
+    <div class="container">
 
-<div class="card">
-<p>
-Built a full virtual security lab using pfSense, Kali Linux, and Windows VMs for hands-on defensive testing.
-</p>
-</div>
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
 
-<div class="card">
-<h3>Environment</h3>
-<ul>
-<li>pfSense firewall + IDS (Snort)</li>
-<li>Kali Linux attack VM</li>
-<li>Windows endpoints</li>
-<li>VMware Fusion on macOS</li>
-</ul>
-</div>
+        <header class="project-hero">
 
-<div class="card">
-<h3>Skills Practiced</h3>
-<ul>
-<li>VLAN segmentation</li>
-<li>Firewall rule creation</li>
-<li>Traffic analysis (Wireshark)</li>
-<li>Intrusion detection tuning</li>
-</ul>
-</div>
+            <span class="project-label">
+                Network Security Project
+            </span>
 
-</div>
+            <h1>At-Home Cybersecurity Lab</h1>
+
+            <p class="project-description">
+                A virtual security lab built on macOS using VMware Fusion,
+                pfSense, Snort, Kali Linux, Windows virtual machines, and
+                Wireshark for hands-on practice with network segmentation,
+                firewalling, intrusion detection, and traffic analysis.
+            </p>
+
+            <div class="tags">
+                <span class="tag">pfSense</span>
+                <span class="tag">Snort</span>
+                <span class="tag">Kali Linux</span>
+                <span class="tag">Windows</span>
+                <span class="tag">VMware Fusion</span>
+                <span class="tag">Wireshark</span>
+                <span class="tag">VLANs</span>
+                <span class="tag">Network Security</span>
+            </div>
+
+        </header>
+
+        <section class="project-card">
+
+            <h2>Project Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Virtualization</span>
+                    <strong>VMware Fusion</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Firewall</span>
+                    <strong>pfSense</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Detection</span>
+                    <strong>Snort IDS</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Analysis</span>
+                    <strong>Wireshark</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                The purpose of this project was to create a safe virtual
+                environment for practicing defensive security and basic
+                penetration-testing concepts without affecting a production
+                network.
+            </p>
+
+            <p>
+                I used VMware Fusion on macOS to run multiple virtual machines,
+                including a pfSense firewall, a Kali Linux system, and Windows
+                endpoints. The virtual machines were placed on separate network
+                segments so traffic could be controlled, monitored, and tested.
+            </p>
+
+            <p>
+                The environment allowed me to practice configuring firewall
+                policies, analyzing network traffic, testing communication
+                between systems, and reviewing intrusion detection alerts.
+            </p>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Lab Architecture</h2>
+
+            <div class="architecture">
+
+                <div class="architecture-item">
+                    <span>Testing System</span>
+                    <strong>Kali Linux</strong>
+
+                    <p>
+                        Used to generate test traffic and perform controlled
+                        security testing.
+                    </p>
+                </div>
+
+                <div
+                    class="architecture-arrow"
+                    aria-hidden="true"
+                >
+                    &rarr;
+                </div>
+
+                <div class="architecture-item">
+                    <span>Security Gateway</span>
+                    <strong>pfSense &amp; Snort</strong>
+
+                    <p>
+                        Controlled traffic between networks and monitored for
+                        suspicious activity.
+                    </p>
+                </div>
+
+                <div
+                    class="architecture-arrow"
+                    aria-hidden="true"
+                >
+                    &rarr;
+                </div>
+
+                <div class="architecture-item">
+                    <span>Target Systems</span>
+                    <strong>Windows Virtual Machines</strong>
+
+                    <p>
+                        Used as endpoints for testing, monitoring, and defensive
+                        analysis.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Environment Components</h2>
+
+            <ul>
+                <li>
+                    VMware Fusion hosted the virtual lab on a macOS computer.
+                </li>
+
+                <li>
+                    pfSense acted as the virtual firewall and network gateway.
+                </li>
+
+                <li>
+                    Snort provided intrusion detection and alerting capabilities.
+                </li>
+
+                <li>
+                    Kali Linux was used to generate controlled scans and test
+                    traffic.
+                </li>
+
+                <li>
+                    Windows virtual machines acted as monitored endpoints.
+                </li>
+
+                <li>
+                    Wireshark was used to capture and inspect network traffic.
+                </li>
+
+                <li>
+                    Separate virtual networks were used to isolate systems and
+                    control communication.
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Configuration and Testing</h2>
+
+            <ul>
+                <li>
+                    Created separate virtual network segments for the lab
+                    systems.
+                </li>
+
+                <li>
+                    Configured pfSense interfaces, routing, and firewall rules.
+                </li>
+
+                <li>
+                    Restricted and allowed communication between systems based
+                    on the purpose of each network segment.
+                </li>
+
+                <li>
+                    Configured Snort to monitor traffic passing through the
+                    firewall.
+                </li>
+
+                <li>
+                    Generated controlled traffic from Kali Linux to test
+                    connectivity and detection.
+                </li>
+
+                <li>
+                    Captured packets in Wireshark to review protocols,
+                    connections, and unexpected activity.
+                </li>
+
+                <li>
+                    Adjusted firewall and intrusion detection settings based on
+                    test results.
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Skills Demonstrated</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-item">
+                    <h3>Network Segmentation</h3>
+
+                    <p>
+                        Created isolated virtual networks and controlled how
+                        systems communicated between segments.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Firewall Administration</h3>
+
+                    <p>
+                        Configured pfSense interfaces, routing, and firewall
+                        rules for the lab environment.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Intrusion Detection</h3>
+
+                    <p>
+                        Used Snort to monitor traffic and review alerts generated
+                        by controlled testing.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Traffic Analysis</h3>
+
+                    <p>
+                        Used Wireshark to inspect packets, protocols, source and
+                        destination addresses, and connection behavior.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Virtualization</h3>
+
+                    <p>
+                        Built and managed a multi-system lab using VMware Fusion
+                        on macOS.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Security Testing</h3>
+
+                    <p>
+                        Generated controlled test traffic from Kali Linux to
+                        validate firewall and detection settings.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Project Outcome</h2>
+
+            <p>
+                The completed lab provided a reusable environment for practicing
+                network security and defensive monitoring. I was able to isolate
+                systems, control traffic through pfSense, monitor activity with
+                Snort, and review packet-level details using Wireshark.
+            </p>
+
+            <p>
+                The project strengthened my understanding of how firewalls,
+                network segmentation, intrusion detection, virtualization, and
+                traffic analysis work together within a layered security
+                environment.
+            </p>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Future Improvements</h2>
+
+            <ul>
+                <li>
+                    Add a Windows Server domain controller and Active Directory
+                    environment.
+                </li>
+
+                <li>
+                    Add a SIEM platform to centralize logs from the firewall and
+                    Windows systems.
+                </li>
+
+                <li>
+                    Configure additional VLANs for servers, users, and testing
+                    systems.
+                </li>
+
+                <li>
+                    Add vulnerable systems designed for safe penetration-testing
+                    practice.
+                </li>
+
+                <li>
+                    Create detection rules for common scanning, brute-force, and
+                    suspicious network activity.
+                </li>
+            </ul>
+
+        </section>
+
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
+
+    </div>
+
+</main>
 
 <footer>
-<div class="container footer-content">
-<div><h3>Riley Bossi</h3><p>Cybersecurity • Systems Administration • Cloud • IT Operations</p></div>
-<div>
-<p>Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a></p>
-<p><a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
-</div>
-</div>
+    <div class="container footer-content">
+
+        <div>
+            <h3>Riley Bossi</h3>
+
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
+        </div>
+
+        <div>
+            <p>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/RileyBossi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+            </p>
+        </div>
+
+    </div>
 </footer>
+
 <script>
-    const menuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+    const menuBtn =
+        document.getElementById("mobile-menu");
+
+    const navLinks =
+        document.getElementById("nav-links");
 
     function closeMenu() {
         navLinks.classList.remove("active");
         menuBtn.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
     }
 
     menuBtn.addEventListener("click", () => {
-        const menuIsOpen = navLinks.classList.toggle("active");
+        const menuIsOpen =
+            navLinks.classList.toggle("active");
 
-        menuBtn.classList.toggle("active", menuIsOpen);
-        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+        menuBtn.classList.toggle(
+            "active",
+            menuIsOpen
+        );
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            menuIsOpen.toString()
+        );
 
         menuBtn.setAttribute(
             "aria-label",
@@ -103,34 +768,55 @@ Built a full virtual security lab using pfSense, Kali Linux, and Windows VMs for
         );
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+    navLinks
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+        });
 
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Escape" &&
-            navLinks.classList.contains("active")
-        ) {
-            closeMenu();
-            menuBtn.focus();
+    document.addEventListener(
+        "click",
+        (event) => {
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedMenuButton =
+                menuBtn.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedMenuButton
+            ) {
+                closeMenu();
+            }
         }
-    });
+    );
 
-    document.addEventListener("click", (event) => {
-        const clickedInsideMenu = navLinks.contains(event.target);
-        const clickedMenuButton = menuBtn.contains(event.target);
-
-        if (!clickedInsideMenu && !clickedMenuButton) {
-            closeMenu();
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Escape" &&
+                navLinks.classList.contains("active")
+            ) {
+                closeMenu();
+                menuBtn.focus();
+            }
         }
-    });
+    );
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
+    window.addEventListener(
+        "resize",
+        () => {
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
         }
-    });
+    );
 </script>
+
 </body>
 </html>
