@@ -1,17 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sentinel Lab | Riley Bossi</title>
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Microsoft Sentinel Project | Riley Bossi</title>
+
+    <meta
+        name="description"
+        content="Microsoft Sentinel project using Azure Logic Apps, Log Analytics, Entra ID, and KQL to centralize security logs."
+    >
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .project-page {
+            padding: 45px 0 80px;
+        }
+
+        .back-button {
+            margin-bottom: 25px;
+        }
+
+        .project-hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            padding: 40px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(85, 194, 255, 0.13),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #16212d,
+                    #0d151d
+                );
+            border: 1px solid #22303d;
+            border-radius: 16px;
+        }
+
+        .project-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(
+                90deg,
+                #55c2ff,
+                transparent
+            );
+        }
+
+        .project-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #55c2ff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .project-hero h1 {
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+        }
+
+        .project-description {
+            max-width: 800px;
+            margin-bottom: 24px;
+            color: #aebfce;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .project-hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .project-hero .tag {
+            padding: 7px 12px;
+            background: rgba(85, 194, 255, 0.08);
+            border: 1px solid rgba(85, 194, 255, 0.25);
+            border-radius: 999px;
+            color: #8edaff;
+            font-size: 0.8rem;
+        }
+
+        .project-card {
+            margin-bottom: 24px;
+            padding: 30px;
+            background: linear-gradient(
+                145deg,
+                rgba(20, 30, 41, 0.98),
+                rgba(13, 21, 29, 0.98)
+            );
+            border: 1px solid #22303d;
+            border-radius: 14px;
+        }
+
+        .project-card h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 1.55rem;
+        }
+
+        .project-card h3 {
+            margin: 22px 0 9px;
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+
+        .project-card p {
+            margin-bottom: 14px;
+            color: #b8c9d6;
+            line-height: 1.75;
+        }
+
+        .project-card ul {
+            margin: 12px 0 0 20px;
+            color: #d3e0e9;
+        }
+
+        .project-card li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .project-card li::marker {
+            color: #55c2ff;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                4,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            padding: 19px;
+            background: rgba(85, 194, 255, 0.04);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .summary-item span {
+            display: block;
+            margin-bottom: 7px;
+            color: #7f95a7;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .summary-item strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .architecture {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr)
+                auto
+                minmax(0, 1fr);
+            gap: 13px;
+            align-items: center;
+            margin-top: 22px;
+        }
+
+        .architecture-item {
+            min-height: 125px;
+            padding: 20px;
+            background: rgba(85, 194, 255, 0.05);
+            border: 1px solid rgba(85, 194, 255, 0.22);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .architecture-item span {
+            display: block;
+            margin-bottom: 8px;
+            color: #55c2ff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .architecture-item strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #ffffff;
+        }
+
+        .architecture-item p {
+            margin: 0;
+            color: #92a6b6;
+            font-size: 0.83rem;
+            line-height: 1.5;
+        }
+
+        .architecture-arrow {
+            color: #55c2ff;
+            font-size: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .skill-item h3 {
+            margin: 0 0 7px;
+            color: #55c2ff;
+            font-size: 1rem;
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 850px) {
+            .summary-grid {
+                grid-template-columns: repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+            }
+
+            .architecture {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture-arrow {
+                transform: rotate(90deg);
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .project-page {
+                padding-top: 30px;
+                padding-bottom: 55px;
+            }
+
+            .project-hero,
+            .project-card {
+                padding: 23px;
+                border-radius: 11px;
+            }
+
+            .summary-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <nav>
     <div class="container nav-container">
 
-        <a href="index.html" class="logo">Riley Bossi</a>
+        <a href="../index.html" class="logo">
+            Riley Bossi
+        </a>
 
         <button
             class="menu-toggle"
@@ -29,7 +318,7 @@
         <div class="nav-links" id="nav-links">
             <a href="../index.html">Home</a>
             <a href="../current-work.html">Current Work</a>
-            <a href="../projects.html">Projects</a>
+            <a href="../projects.html" class="active">Projects</a>
             <a href="../tools.html">Tools</a>
             <a href="../certifications.html">Certifications</a>
         </div>
@@ -37,62 +326,388 @@
     </div>
 </nav>
 
-<div class="container section">
+<main class="project-page">
 
-<h1 class="section-title">Microsoft Sentinel Lab</h1>
+    <div class="container">
 
-<div class="card">
-<p>
-Built a cross-tenant SIEM ingestion pipeline using Azure Logic Apps, Log Analytics, and Entra ID logs.
-</p>
-</div>
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
 
-<div class="card">
-<h3>Skills</h3>
-<ul>
-<li>KQL querying</li>
-<li>Log ingestion pipelines</li>
-<li>Azure Logic Apps automation</li>
-<li>Identity monitoring (Entra ID)</li>
-</ul>
-</div>
+        <header class="project-hero">
 
-<div class="card">
-<h3>Impact</h3>
-<ul>
-<li>Simulated enterprise SOC workflows</li>
-<li>Built cross-tenant log ingestion system</li>
-<li>Improved identity monitoring visibility</li>
-</ul>
-</div>
+            <span class="project-label">
+                Cloud Security Project
+            </span>
 
-</div>
+            <h1>Microsoft Sentinel Lab</h1>
+
+            <p class="project-description">
+                A Microsoft Azure security monitoring project that used
+                Microsoft Sentinel, Azure Logic Apps, Log Analytics,
+                Microsoft Entra ID, and KQL to centralize and investigate
+                identity-related security logs.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Microsoft Sentinel</span>
+                <span class="tag">Microsoft Azure</span>
+                <span class="tag">Entra ID</span>
+                <span class="tag">Azure Logic Apps</span>
+                <span class="tag">Log Analytics</span>
+                <span class="tag">KQL</span>
+                <span class="tag">SIEM</span>
+            </div>
+
+        </header>
+
+        <section class="project-card">
+
+            <h2>Project Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Platform</span>
+                    <strong>Microsoft Sentinel</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Data Source</span>
+                    <strong>Microsoft Entra ID</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Automation</span>
+                    <strong>Azure Logic Apps</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Query Language</span>
+                    <strong>KQL</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                The purpose of this project was to gain practical experience
+                with Microsoft Sentinel and understand how identity logs can
+                be collected, centralized, and searched within a cloud-based
+                security information and event management platform.
+            </p>
+
+            <p>
+                I created a workflow that collected Microsoft Entra ID log
+                information and forwarded it into a Log Analytics workspace.
+                Microsoft Sentinel was connected to the workspace so that the
+                data could be reviewed and investigated using Kusto Query
+                Language.
+            </p>
+
+            <p>
+                This project helped demonstrate how organizations and managed
+                service providers can bring security data from separate
+                environments into one central location for monitoring.
+            </p>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>How the Project Worked</h2>
+
+            <div class="architecture">
+
+                <div class="architecture-item">
+                    <span>Source</span>
+                    <strong>Microsoft Entra ID</strong>
+
+                    <p>
+                        Generated identity and sign-in log data.
+                    </p>
+                </div>
+
+                <div
+                    class="architecture-arrow"
+                    aria-hidden="true"
+                >
+                    &rarr;
+                </div>
+
+                <div class="architecture-item">
+                    <span>Collection</span>
+                    <strong>Azure Logic Apps</strong>
+
+                    <p>
+                        Retrieved and processed the security records.
+                    </p>
+                </div>
+
+                <div
+                    class="architecture-arrow"
+                    aria-hidden="true"
+                >
+                    &rarr;
+                </div>
+
+                <div class="architecture-item">
+                    <span>Monitoring</span>
+                    <strong>Log Analytics &amp; Sentinel</strong>
+
+                    <p>
+                        Stored and searched the centralized log data.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Implementation</h2>
+
+            <ul>
+                <li>
+                    Created and configured a Log Analytics workspace.
+                </li>
+
+                <li>
+                    Enabled Microsoft Sentinel for centralized security
+                    monitoring.
+                </li>
+
+                <li>
+                    Configured the necessary identity access and permissions.
+                </li>
+
+                <li>
+                    Built an Azure Logic App to collect and process Entra ID
+                    log information.
+                </li>
+
+                <li>
+                    Forwarded the collected records into the Log Analytics
+                    workspace.
+                </li>
+
+                <li>
+                    Verified that the records were available for searching.
+                </li>
+
+                <li>
+                    Used KQL to review and summarize the ingested activity.
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Skills Demonstrated</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-item">
+                    <h3>Microsoft Sentinel</h3>
+
+                    <p>
+                        Worked with a cloud-based SIEM platform for centralized
+                        security monitoring.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Log Ingestion</h3>
+
+                    <p>
+                        Built a workflow for forwarding security records into
+                        Log Analytics.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Azure Automation</h3>
+
+                    <p>
+                        Used Azure Logic Apps to automate the collection and
+                        processing of log data.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>KQL Investigation</h3>
+
+                    <p>
+                        Used Kusto Query Language to search and summarize
+                        identity-related events.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Identity Security</h3>
+
+                    <p>
+                        Worked with Microsoft Entra ID logs relevant to account
+                        and sign-in investigations.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Troubleshooting</h3>
+
+                    <p>
+                        Validated workflow execution, permissions, workspace
+                        configuration, and successful data ingestion.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Project Outcome</h2>
+
+            <p>
+                The completed lab provided practical experience building a
+                basic cloud security monitoring pipeline. Identity log data
+                could be collected, sent to a central workspace, and reviewed
+                through Microsoft Sentinel and Log Analytics.
+            </p>
+
+            <p>
+                The project strengthened my understanding of SIEM
+                architecture, Azure automation, identity monitoring, log
+                ingestion, and the role of KQL in security investigations.
+            </p>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Future Improvements</h2>
+
+            <ul>
+                <li>
+                    Create Sentinel analytics rules for suspicious sign-in
+                    behavior.
+                </li>
+
+                <li>
+                    Build dashboards and workbooks to visualize identity
+                    activity.
+                </li>
+
+                <li>
+                    Add automated response playbooks for generated incidents.
+                </li>
+
+                <li>
+                    Ingest additional Microsoft 365, endpoint, and firewall
+                    logs.
+                </li>
+            </ul>
+
+        </section>
+
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
+
+    </div>
+
+</main>
 
 <footer>
-<div class="container footer-content">
-<div><h3>Riley Bossi</h3><p>Cybersecurity • Systems Administration • Cloud • IT Operations</p></div>
-<div>
-<p>Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a></p>
-<p><a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
-</div>
-</div>
+    <div class="container footer-content">
+
+        <div>
+            <h3>Riley Bossi</h3>
+
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
+        </div>
+
+        <div>
+            <p>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/RileyBossi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+            </p>
+        </div>
+
+    </div>
 </footer>
+
 <script>
-    const menuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+    const menuBtn =
+        document.getElementById("mobile-menu");
+
+    const navLinks =
+        document.getElementById("nav-links");
 
     function closeMenu() {
         navLinks.classList.remove("active");
         menuBtn.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
     }
 
     menuBtn.addEventListener("click", () => {
-        const menuIsOpen = navLinks.classList.toggle("active");
+        const menuIsOpen =
+            navLinks.classList.toggle("active");
 
-        menuBtn.classList.toggle("active", menuIsOpen);
-        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+        menuBtn.classList.toggle(
+            "active",
+            menuIsOpen
+        );
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            menuIsOpen.toString()
+        );
 
         menuBtn.setAttribute(
             "aria-label",
@@ -102,34 +717,55 @@ Built a cross-tenant SIEM ingestion pipeline using Azure Logic Apps, Log Analyti
         );
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+    navLinks
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+        });
 
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Escape" &&
-            navLinks.classList.contains("active")
-        ) {
-            closeMenu();
-            menuBtn.focus();
+    document.addEventListener(
+        "click",
+        (event) => {
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedMenuButton =
+                menuBtn.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedMenuButton
+            ) {
+                closeMenu();
+            }
         }
-    });
+    );
 
-    document.addEventListener("click", (event) => {
-        const clickedInsideMenu = navLinks.contains(event.target);
-        const clickedMenuButton = menuBtn.contains(event.target);
-
-        if (!clickedInsideMenu && !clickedMenuButton) {
-            closeMenu();
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Escape" &&
+                navLinks.classList.contains("active")
+            ) {
+                closeMenu();
+                menuBtn.focus();
+            }
         }
-    });
+    );
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
+    window.addEventListener(
+        "resize",
+        () => {
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
         }
-    });
+    );
 </script>
+
 </body>
 </html>
