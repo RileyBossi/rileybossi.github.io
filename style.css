@@ -36,11 +36,17 @@ body {
 a {
     text-decoration: none;
     color: #55c2ff;
-    transition: 0.25s;
+    transition: color 0.25s ease;
 }
 
 a:hover {
     color: #9fe2ff;
+}
+
+a:focus-visible {
+    outline: 2px solid #55c2ff;
+    outline-offset: 4px;
+    border-radius: 3px;
 }
 
 /* =========================
@@ -57,10 +63,11 @@ nav {
 }
 
 .nav-container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 0;
+    min-height: 72px;
 }
 
 .logo {
@@ -73,6 +80,7 @@ nav {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 25px;
 }
 
@@ -85,15 +93,16 @@ nav {
 .nav-links a::after {
     content: "";
     position: absolute;
-    width: 0%;
+    width: 0;
     height: 2px;
     background: #55c2ff;
     left: 0;
     bottom: -5px;
-    transition: 0.3s;
+    transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
     width: 100%;
 }
 
@@ -103,16 +112,52 @@ nav {
 
 .menu-toggle {
     display: none;
+    width: 44px;
+    height: 44px;
+    padding: 9px;
+    border: 0;
+    background: transparent;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     cursor: pointer;
 }
 
 .menu-toggle span {
+    display: block;
     width: 26px;
     height: 3px;
     background: #d8e6f2;
     border-radius: 2px;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.menu-toggle:hover span {
+    background: #55c2ff;
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid #55c2ff;
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* HAMBURGER TO X ANIMATION */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* =========================
@@ -159,12 +204,16 @@ nav {
     border: 1px solid #55c2ff;
     border-radius: 6px;
     color: #55c2ff;
-    transition: 0.3s;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .btn:hover {
     background: #55c2ff;
     color: #0b1118;
+    transform: translateY(-2px);
 }
 
 /* =========================
@@ -191,7 +240,9 @@ nav {
     border-radius: 10px;
     padding: 30px;
     margin-bottom: 15px;
-    transition: 0.3s;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .card:hover {
@@ -240,25 +291,56 @@ footer {
 
 @media (max-width: 900px) {
 
+    .nav-container {
+        min-height: 72px;
+    }
+
     .menu-toggle {
         display: flex;
     }
 
     .nav-links {
         position: absolute;
-        top: 72px;
-        right: 5%;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 12px;
         background: #121b25;
-        flex-direction: column;
-        width: 230px;
-        padding: 20px;
         border: 1px solid #1d2a36;
-        border-radius: 10px;
+        border-top: 0;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
         display: none;
     }
 
     .nav-links.active {
         display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 6px;
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+        background: rgba(85, 194, 255, 0.1);
+        color: #55c2ff;
+    }
+
+    .nav-links a:focus-visible {
+        outline: 2px solid #55c2ff;
+        outline-offset: -2px;
     }
 
     .hero-content h1 {
@@ -273,6 +355,7 @@ footer {
         flex-direction: column;
     }
 }
+
 /* =========================
    PROJECT PAGES
 ========================= */
@@ -314,6 +397,27 @@ footer {
     margin-bottom: 25px;
 }
 
-.active {
-    color: #55c2ff !important;
+/* CURRENT PAGE LINK */
+
+.nav-links a.active {
+    color: #55c2ff;
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
