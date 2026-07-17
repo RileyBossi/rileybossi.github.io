@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Projects | Riley Bossi</title>
+
+    <meta
+        name="description"
+        content="Cybersecurity, cloud, malware analysis, SIEM, penetration testing, and web development projects by Riley Bossi."
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- NAVIGATION -->
@@ -31,7 +38,7 @@
         <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
             <a href="current-work.html">Current Work</a>
-            <a href="projects.html">Projects</a>
+            <a href="projects.html" class="active">Projects</a>
             <a href="tools.html">Tools</a>
             <a href="certifications.html">Certifications</a>
         </div>
@@ -39,131 +46,276 @@
     </div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
+<main>
 
-    <div class="container">
+    <!-- PROJECTS INTRO -->
+    <section class="section projects-section">
 
-        <h1 class="section-title">Projects</h1>
+        <div class="container">
 
-        <div class="card">
-            <h3>TryHackMe SOC Training Path</h3>
+            <div class="projects-heading">
+                <p class="section-label">Hands-on experience</p>
 
-            <p>
-                Completed SOC Level 1, SOC Level 2, and the SOC Simulator.
-                Focused on real-world analyst workflows including alert triage,
-                incident response, phishing investigations, malware analysis,
-                threat intelligence, and SIEM operations.
-            </p>
+                <h1 class="section-title">Projects</h1>
 
-            <p>
-                <strong>Skills:</strong> Splunk, ELK, MITRE ATT&CK, OpenCTI,
-                YARA, MISP, Sysmon, Wazuh, Wireshark, Snort
-            </p>
+                <p class="section-intro">
+                    A collection of cybersecurity, cloud, malware analysis,
+                    offensive security, and development projects completed
+                    through personal labs, training platforms, and independent study.
+                </p>
+            </div>
 
-            <a href="riley-projects/project-tryhackme-soc.html" class="btn">
-                View Project
-            </a>
+            <div class="project-grid">
+
+                <!-- MALWARE ANALYSIS -->
+                <article class="project-card featured-project">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Malware Analysis</span>
+                        <span class="featured-badge">Featured</span>
+                    </div>
+
+                    <h2>Advanced Malware Analysis &amp; Reverse Engineering</h2>
+
+                    <p>
+                        Conducted static and dynamic analysis of suspicious
+                        Windows executables inside an isolated virtual lab.
+                        Investigated persistence, process injection, host
+                        indicators, and command-and-control behavior.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Analyzed executable structure and suspicious strings</li>
+                        <li>Monitored processes, registry changes, and file activity</li>
+                        <li>Investigated outbound traffic and possible C2 behavior</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">Ghidra</span>
+                        <span class="tag">ProcMon</span>
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Regshot</span>
+                        <span class="tag">Reverse Engineering</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-malware-analysis.html"
+                            class="btn"
+                        >
+                            Read Case Study
+                        </a>
+                    </div>
+
+                </article>
+
+                <!-- SENTINEL -->
+                <article class="project-card">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Cloud Security</span>
+                    </div>
+
+                    <h2>Microsoft Sentinel Log Ingestion Lab</h2>
+
+                    <p>
+                        Designed a custom SIEM ingestion pipeline using Azure
+                        services to centralize identity and security logs across
+                        separate Microsoft cloud environments.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Built a workflow with Azure Logic Apps</li>
+                        <li>Ingested data into Log Analytics</li>
+                        <li>Investigated events using KQL</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">Microsoft Sentinel</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">KQL</span>
+                        <span class="tag">Entra ID</span>
+                        <span class="tag">Logic Apps</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-sentinel.html"
+                            class="btn"
+                        >
+                            View Project
+                        </a>
+                    </div>
+
+                </article>
+
+                <!-- HOME LAB -->
+                <article class="project-card">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Network Security</span>
+                    </div>
+
+                    <h2>At-Home Cybersecurity Lab</h2>
+
+                    <p>
+                        Built a virtual enterprise-style network to practice
+                        firewall configuration, segmentation, traffic analysis,
+                        intrusion detection, and troubleshooting.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Configured pfSense firewall rules and networking</li>
+                        <li>Tested intrusion detection with Snort</li>
+                        <li>Analyzed traffic with Wireshark</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">pfSense</span>
+                        <span class="tag">Snort</span>
+                        <span class="tag">VLANs</span>
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">VMware Fusion</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-home-lab.html"
+                            class="btn"
+                        >
+                            View Project
+                        </a>
+                    </div>
+
+                </article>
+
+                <!-- SOC TRAINING -->
+                <article class="project-card">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Security Operations</span>
+                    </div>
+
+                    <h2>TryHackMe SOC Training Path</h2>
+
+                    <p>
+                        Completed SOC Level 1, SOC Level 2, and the SOC Simulator
+                        while practicing analyst workflows involving alerts,
+                        investigations, threat intelligence, and incident response.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Triaged alerts and investigated suspicious activity</li>
+                        <li>Practiced phishing and malware investigations</li>
+                        <li>Worked with SIEM and threat intelligence platforms</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">Splunk</span>
+                        <span class="tag">Wazuh</span>
+                        <span class="tag">Sysmon</span>
+                        <span class="tag">MITRE ATT&amp;CK</span>
+                        <span class="tag">OpenCTI</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-tryhackme-soc.html"
+                            class="btn"
+                        >
+                            View Project
+                        </a>
+                    </div>
+
+                </article>
+
+                <!-- PENETRATION TESTING -->
+                <article class="project-card">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Offensive Security</span>
+                    </div>
+
+                    <h2>TryHackMe Junior Penetration Tester</h2>
+
+                    <p>
+                        Developed an attacker's mindset through hands-on
+                        exercises involving reconnaissance, enumeration,
+                        exploitation, privilege escalation, and post-exploitation.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Enumerated services and web applications</li>
+                        <li>Practiced common exploitation techniques</li>
+                        <li>Performed Windows and Linux privilege escalation</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">Nmap</span>
+                        <span class="tag">Burp Suite</span>
+                        <span class="tag">Metasploit</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Windows</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-junior-pentest.html"
+                            class="btn"
+                        >
+                            View Project
+                        </a>
+                    </div>
+
+                </article>
+
+                <!-- AMAZON CLONE -->
+                <article class="project-card">
+
+                    <div class="project-card-top">
+                        <span class="project-category">Web Development</span>
+                    </div>
+
+                    <h2>Amazon Clone JavaScript Project</h2>
+
+                    <p>
+                        Developed a functional e-commerce application while
+                        learning JavaScript fundamentals, DOM manipulation,
+                        APIs, local storage, Git, and client-side security.
+                    </p>
+
+                    <ul class="project-highlights">
+                        <li>Built interactive shopping functionality</li>
+                        <li>Used browser storage to retain application data</li>
+                        <li>Practiced modular JavaScript development</li>
+                    </ul>
+
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">APIs</span>
+                        <span class="tag">Git</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a
+                            href="riley-projects/project-amazon-clone.html"
+                            class="btn"
+                        >
+                            View Project
+                        </a>
+                    </div>
+
+                </article>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>Advanced Malware Analysis & Reverse Engineering Labs</h3>
+    </section>
 
-            <p>
-                Conducted in-depth static and dynamic malware analysis within an isolated virtual environment to dissect suspicious Windows executables. 
-                Successfully uncovered host-based indicators, injection techniques, persistence mechanisms, and network command-and-control (C2) behaviors.
-            </p>
-
-            <p>
-                <strong>Skills & Tools:</strong> Ghidra, PEiD, PEview, PEStudio, Process Monitor, Process Explorer, Regshot, Wireshark, Reverse Engineering, Traffic Analysis
-            </p>
-
-            <a href="riley-projects/project-malware-analysis.html" class="btn">
-                View Detailed Project Report
-            </a>
-        </div>
-        
-        <div class="card">
-            <h3>TryHackMe Junior Penetration Tester</h3>
-
-            <p>
-                Developed an attacker's mindset through hands-on offensive
-                security exercises including enumeration, exploitation,
-                privilege escalation, and post-exploitation activities.
-            </p>
-
-            <p>
-                <strong>Skills:</strong> Nmap, Burp Suite, Metasploit,
-                Linux Privilege Escalation, Windows Privilege Escalation
-            </p>
-
-            <a href="riley-projects/project-junior-pentest.html" class="btn">
-                View Project
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>At-Home Cybersecurity Lab</h3>
-
-            <p>
-                Built a virtual enterprise-style network using pfSense,
-                Windows, Kali Linux, Snort, and VMware Fusion to practice
-                firewall configuration, VLANs, traffic analysis,
-                intrusion detection, and network troubleshooting.
-            </p>
-
-            <p>
-                <strong>Skills:</strong> pfSense, Snort, VLANs,
-                Wireshark, VMware Fusion, Network Security
-            </p>
-
-            <a href="riley-projects/project-home-lab.html" class="btn">
-                View Project
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>Microsoft Sentinel Log Ingestion Lab</h3>
-
-            <p>
-                Designed a custom Microsoft Sentinel ingestion pipeline
-                utilizing Azure Logic Apps, Blob Storage, Log Analytics,
-                and Microsoft Entra ID to simulate SIEM operations
-                across separate Azure tenants.
-            </p>
-
-            <p>
-                <strong>Skills:</strong> Sentinel, Azure Logic Apps,
-                KQL, Entra ID, Conditional Access, MFA
-            </p>
-
-            <a href="riley-projects/project-sentinel.html" class="btn">
-                View Project
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>Amazon Clone JavaScript Project</h3>
-
-            <p>
-                Developed a functional e-commerce application while learning
-                JavaScript fundamentals, DOM manipulation, APIs, local storage,
-                and web application security concepts.
-            </p>
-
-            <p>
-                <strong>Skills:</strong> JavaScript, HTML, CSS,
-                APIs, Git, Client-Side Security
-            </p>
-
-            <a href="riley-projects/project-amazon-clone.html" class="btn">
-                View Project
-            </a>
-        </div>
-
-    </div>
-
-</section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -185,9 +337,22 @@
             </p>
 
             <p>
-                <a href="https://www.linkedin.com/in/riley-bossi-b08729295"
-                   target="_blank">
+                <a
+                    href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     LinkedIn Profile
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/RileyBossi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub Profile
                 </a>
             </p>
 
