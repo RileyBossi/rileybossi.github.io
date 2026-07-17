@@ -33,11 +33,18 @@
 
         <a href="index.html" class="logo">Riley Bossi</a>
 
-        <div class="menu-toggle" id="mobile-menu">
+        <button
+            class="menu-toggle"
+            id="mobile-menu"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="nav-links"
+            aria-expanded="false"
+        >
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
 
         <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
@@ -46,6 +53,7 @@
             <a href="tools.html">Tools</a>
             <a href="certifications.html">Certifications</a>
         </div>
+
     </div>
 </nav>
 
@@ -269,14 +277,58 @@ if ($Subdomains -and $Subdomains.Count -gt 0) {
 </footer>
 
 <script>
+    const menuBtn = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
 
-const menuBtn = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
+    function closeMenu() {
+        navLinks.classList.remove("active");
+        menuBtn.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open navigation menu");
+    }
 
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+    menuBtn.addEventListener("click", () => {
+        const menuIsOpen = navLinks.classList.toggle("active");
 
+        menuBtn.classList.toggle("active", menuIsOpen);
+        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+
+        menuBtn.setAttribute(
+            "aria-label",
+            menuIsOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+        );
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            navLinks.classList.contains("active")
+        ) {
+            closeMenu();
+            menuBtn.focus();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        const clickedInsideMenu = navLinks.contains(event.target);
+        const clickedMenuButton = menuBtn.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedMenuButton) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+    });
 </script>
 
 </body>
