@@ -831,3 +831,59 @@ footer {
         width: 100%;
     }
 }
+/* =========================
+   CERTIFICATION STRIP
+========================= */
+
+.cert-strip {
+    border-top: 1px solid #1d2a36;
+    border-bottom: 1px solid #1d2a36;
+    background: #101821;
+    padding: 22px 0;
+}
+
+.cert-strip-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.cert-item {
+    min-width: 190px;
+    padding: 16px 22px;
+    background: #121b25;
+    border: 1px solid #1d2a36;
+    border-radius: 10px;
+    text-align: center;
+    transition: all .25s ease;
+}
+
+.cert-item:hover {
+    transform: translateY(-4px);
+    border-color: #55c2ff;
+}
+
+.cert-title {
+    display: block;
+    font-size: .75rem;
+    color: #55c2ff;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 6px;
+}
+
+.cert-name {
+    display: block;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+@media (max-width:700px){
+
+    .cert-item{
+        width:100%;
+    }
+
+}
