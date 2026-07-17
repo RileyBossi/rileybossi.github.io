@@ -1,17 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SOC Training Path | Riley Bossi</title>
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TryHackMe SOC Training | Riley Bossi</title>
+
+    <meta
+        name="description"
+        content="Hands-on SOC analyst training covering SIEM investigation, log analysis, phishing analysis, incident response, threat intelligence, and MITRE ATT&CK."
+    >
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .project-page {
+            padding: 45px 0 80px;
+        }
+
+        .back-button {
+            margin-bottom: 25px;
+        }
+
+        .project-hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            padding: 40px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(85, 194, 255, 0.13),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    145deg,
+                    #16212d,
+                    #0d151d
+                );
+            border: 1px solid #22303d;
+            border-radius: 16px;
+        }
+
+        .project-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(
+                90deg,
+                #55c2ff,
+                transparent
+            );
+        }
+
+        .project-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #55c2ff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .project-hero h1 {
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+        }
+
+        .project-description {
+            max-width: 800px;
+            margin-bottom: 24px;
+            color: #aebfce;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .project-hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .project-hero .tag {
+            padding: 7px 12px;
+            background: rgba(85, 194, 255, 0.08);
+            border: 1px solid rgba(85, 194, 255, 0.25);
+            border-radius: 999px;
+            color: #8edaff;
+            font-size: 0.8rem;
+        }
+
+        .project-card {
+            margin-bottom: 24px;
+            padding: 30px;
+            background: linear-gradient(
+                145deg,
+                rgba(20, 30, 41, 0.98),
+                rgba(13, 21, 29, 0.98)
+            );
+            border: 1px solid #22303d;
+            border-radius: 14px;
+        }
+
+        .project-card h2 {
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-size: 1.55rem;
+        }
+
+        .project-card p {
+            margin-bottom: 14px;
+            color: #b8c9d6;
+            line-height: 1.75;
+        }
+
+        .project-card ul {
+            margin: 12px 0 0 20px;
+            color: #d3e0e9;
+        }
+
+        .project-card li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .project-card li::marker {
+            color: #55c2ff;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                4,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            padding: 19px;
+            background: rgba(85, 194, 255, 0.04);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .summary-item span {
+            display: block;
+            margin-bottom: 7px;
+            color: #7f95a7;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .summary-item strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .tools-grid,
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tool-item,
+        .skill-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid #22303d;
+            border-radius: 10px;
+        }
+
+        .tool-item h3,
+        .skill-item h3 {
+            margin: 0 0 7px;
+            color: #55c2ff;
+            font-size: 1rem;
+        }
+
+        .tool-item p,
+        .skill-item p {
+            margin: 0;
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        .hands-on-list {
+            display: grid;
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .hands-on-item {
+            padding: 17px 18px;
+            background: rgba(85, 194, 255, 0.04);
+            border-left: 3px solid #55c2ff;
+            border-radius: 0 8px 8px 0;
+            color: #d3e0e9;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 850px) {
+            .summary-grid {
+                grid-template-columns: repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+            }
+        }
+
+        @media (max-width: 600px) {
+            .project-page {
+                padding-top: 30px;
+                padding-bottom: 55px;
+            }
+
+            .project-hero,
+            .project-card {
+                padding: 23px;
+                border-radius: 11px;
+            }
+
+            .summary-grid,
+            .tools-grid,
+            .skills-grid,
+            .hands-on-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <nav>
     <div class="container nav-container">
 
-        <a href="index.html" class="logo">Riley Bossi</a>
+        <a href="../index.html" class="logo">
+            Riley Bossi
+        </a>
 
         <button
             class="menu-toggle"
@@ -29,7 +279,7 @@
         <div class="nav-links" id="nav-links">
             <a href="../index.html">Home</a>
             <a href="../current-work.html">Current Work</a>
-            <a href="../projects.html">Projects</a>
+            <a href="../projects.html" class="active">Projects</a>
             <a href="../tools.html">Tools</a>
             <a href="../certifications.html">Certifications</a>
         </div>
@@ -37,69 +287,372 @@
     </div>
 </nav>
 
-<div class="container section">
+<main class="project-page">
 
-<h1 class="section-title">TryHackMe SOC Training Path</h1>
+    <div class="container">
 
-<div class="card">
-<p>
-Completed SOC Level 1 and SOC Level 2 pathways focusing on real-world SOC workflows,
-alert triage, SIEM analysis, and incident response.
-</p>
-</div>
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
 
-<div class="card">
-<h3>What I Learned</h3>
-<ul>
-<li>SIEM investigation using Splunk and ELK</li>
-<li>MITRE ATT&CK mapping for threat actor behavior</li>
-<li>Log correlation across endpoints and identity systems</li>
-<li>Phishing analysis and IOC extraction</li>
-<li>Windows Event Log & Sysmon analysis</li>
-</ul>
-</div>
+        <header class="project-hero">
 
-<div class="card">
-<h3>Key Skills</h3>
-<ul>
-<li>Incident response workflows</li>
-<li>Detection engineering fundamentals</li>
-<li>Threat intelligence interpretation</li>
-<li>Malware behavior analysis</li>
-</ul>
-</div>
+            <span class="project-label">
+                SOC Analyst Training
+            </span>
 
-</div>
+            <h1>TryHackMe SOC Training Path</h1>
+
+            <p class="project-description">
+                Completed the TryHackMe SOC Level 1 and SOC Level 2
+                pathways, gaining hands-on experience with alert triage,
+                SIEM investigations, log analysis, phishing analysis,
+                incident response, and threat detection.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Splunk</span>
+                <span class="tag">Elastic Stack</span>
+                <span class="tag">Wireshark</span>
+                <span class="tag">Sysmon</span>
+                <span class="tag">Windows Event Logs</span>
+                <span class="tag">MITRE ATT&amp;CK</span>
+                <span class="tag">SIEM</span>
+                <span class="tag">Incident Response</span>
+            </div>
+
+        </header>
+
+        <section class="project-card">
+
+            <h2>Training Summary</h2>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Pathways</span>
+                    <strong>SOC Level 1 and Level 2</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Primary Focus</span>
+                    <strong>Security Monitoring</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Investigation</span>
+                    <strong>SIEM and Log Analysis</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Response</span>
+                    <strong>Incident Triage</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Hands-On Experience</h2>
+
+            <p>
+                The training included practical scenarios that simulated
+                common SOC analyst responsibilities. Rather than only reading
+                about security concepts, I worked directly with alerts, logs,
+                packet captures, suspicious files, and indicators of compromise.
+            </p>
+
+            <div class="hands-on-list">
+
+                <div class="hands-on-item">
+                    Investigated security alerts and determined whether activity
+                    was malicious or benign.
+                </div>
+
+                <div class="hands-on-item">
+                    Searched and correlated logs across multiple systems and
+                    data sources.
+                </div>
+
+                <div class="hands-on-item">
+                    Analyzed phishing emails, URLs, headers, and attachments.
+                </div>
+
+                <div class="hands-on-item">
+                    Reviewed Windows Event Logs and Sysmon telemetry.
+                </div>
+
+                <div class="hands-on-item">
+                    Investigated network traffic and suspicious connections.
+                </div>
+
+                <div class="hands-on-item">
+                    Mapped observed behavior to the MITRE ATT&amp;CK framework.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Tools Used</h2>
+
+            <div class="tools-grid">
+
+                <div class="tool-item">
+                    <h3>Splunk</h3>
+
+                    <p>
+                        Searched and correlated security events during SIEM
+                        investigation exercises.
+                    </p>
+                </div>
+
+                <div class="tool-item">
+                    <h3>Elastic Stack</h3>
+
+                    <p>
+                        Reviewed centralized logs and investigated suspicious
+                        activity using Elasticsearch and Kibana.
+                    </p>
+                </div>
+
+                <div class="tool-item">
+                    <h3>Wireshark</h3>
+
+                    <p>
+                        Examined packet captures, protocols, IP addresses,
+                        DNS requests, and network connections.
+                    </p>
+                </div>
+
+                <div class="tool-item">
+                    <h3>Sysmon</h3>
+
+                    <p>
+                        Analyzed detailed Windows process, network, and file
+                        activity.
+                    </p>
+                </div>
+
+                <div class="tool-item">
+                    <h3>Windows Event Viewer</h3>
+
+                    <p>
+                        Reviewed authentication, process, service, and system
+                        events during investigations.
+                    </p>
+                </div>
+
+                <div class="tool-item">
+                    <h3>Threat Intelligence Tools</h3>
+
+                    <p>
+                        Researched IP addresses, domains, file hashes, URLs,
+                        and other indicators of compromise.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Lessons Learned</h2>
+
+            <ul>
+                <li>
+                    A security alert is only a starting point and must be
+                    validated using supporting evidence.
+                </li>
+
+                <li>
+                    Effective investigations require correlating endpoint,
+                    identity, email, and network activity.
+                </li>
+
+                <li>
+                    Establishing a timeline makes it easier to understand how
+                    an incident began and what systems were affected.
+                </li>
+
+                <li>
+                    Indicators of compromise should be evaluated in context
+                    rather than treated as proof of malicious activity by
+                    themselves.
+                </li>
+
+                <li>
+                    MITRE ATT&amp;CK helps translate technical findings into
+                    recognizable attacker tactics and techniques.
+                </li>
+
+                <li>
+                    Clear documentation is essential when escalating an alert
+                    or handing an investigation to another analyst.
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Skills Demonstrated</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-item">
+                    <h3>Alert Triage</h3>
+
+                    <p>
+                        Evaluated alerts, gathered evidence, and determined the
+                        appropriate investigation path.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Log Correlation</h3>
+
+                    <p>
+                        Connected related activity across multiple log sources
+                        to build an incident timeline.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Phishing Analysis</h3>
+
+                    <p>
+                        Reviewed sender information, headers, links, attachments,
+                        and extracted indicators.
+                    </p>
+                </div>
+
+                <div class="skill-item">
+                    <h3>Incident Response</h3>
+
+                    <p>
+                        Practiced investigation, containment, documentation, and
+                        escalation workflows.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="project-card">
+
+            <h2>Training Outcome</h2>
+
+            <p>
+                Completing these pathways strengthened my ability to approach
+                security alerts methodically, identify useful evidence, and
+                communicate investigation findings clearly.
+            </p>
+
+            <p>
+                The hands-on exercises also reinforced skills that apply directly
+                to SOC analyst work, including SIEM searching, endpoint analysis,
+                phishing investigation, threat intelligence, and incident response.
+            </p>
+
+        </section>
+
+        <div class="back-button">
+            <a href="../projects.html" class="btn">
+                &larr; Back to Projects
+            </a>
+        </div>
+
+    </div>
+
+</main>
 
 <footer>
-  <div class="container footer-content">
-    <div>
-      <h3>Riley Bossi</h3>
-      <p>Cybersecurity • Systems Administration • Cloud • IT Operations</p>
-    </div>
+    <div class="container footer-content">
 
-    <div>
-      <p>Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a></p>
-      <p><a href="https://www.linkedin.com/in/riley-bossi-b08729295" target="_blank">LinkedIn</a></p>
+        <div>
+            <h3>Riley Bossi</h3>
+
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
+        </div>
+
+        <div>
+            <p>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/RileyBossi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+            </p>
+        </div>
+
     </div>
-  </div>
 </footer>
+
 <script>
-    const menuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+    const menuBtn =
+        document.getElementById("mobile-menu");
+
+    const navLinks =
+        document.getElementById("nav-links");
 
     function closeMenu() {
         navLinks.classList.remove("active");
         menuBtn.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
     }
 
     menuBtn.addEventListener("click", () => {
-        const menuIsOpen = navLinks.classList.toggle("active");
+        const menuIsOpen =
+            navLinks.classList.toggle("active");
 
-        menuBtn.classList.toggle("active", menuIsOpen);
-        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+        menuBtn.classList.toggle(
+            "active",
+            menuIsOpen
+        );
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            menuIsOpen.toString()
+        );
 
         menuBtn.setAttribute(
             "aria-label",
@@ -109,34 +662,55 @@ alert triage, SIEM analysis, and incident response.
         );
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+    navLinks
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+        });
 
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Escape" &&
-            navLinks.classList.contains("active")
-        ) {
-            closeMenu();
-            menuBtn.focus();
+    document.addEventListener(
+        "click",
+        (event) => {
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
+
+            const clickedMenuButton =
+                menuBtn.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedMenuButton
+            ) {
+                closeMenu();
+            }
         }
-    });
+    );
 
-    document.addEventListener("click", (event) => {
-        const clickedInsideMenu = navLinks.contains(event.target);
-        const clickedMenuButton = menuBtn.contains(event.target);
-
-        if (!clickedInsideMenu && !clickedMenuButton) {
-            closeMenu();
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Escape" &&
+                navLinks.classList.contains("active")
+            ) {
+                closeMenu();
+                menuBtn.focus();
+            }
         }
-    });
+    );
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
+    window.addEventListener(
+        "resize",
+        () => {
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
         }
-    });
+    );
 </script>
+
 </body>
 </html>
