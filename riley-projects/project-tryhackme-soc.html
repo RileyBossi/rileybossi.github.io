@@ -9,21 +9,32 @@
 <body>
 
 <nav>
-  <div class="container nav-container">
-    <a href="../index.html" class="logo">Riley Bossi</a>
+    <div class="container nav-container">
 
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span><span></span><span></span>
-    </div>
+        <a href="index.html" class="logo">Riley Bossi</a>
 
-    <div class="nav-links">
-      <a href="../index.html">Home</a>
-      <a href="../current-work.html">Current Work</a>
-      <a href="../projects.html">Projects</a>
-      <a href="../tools.html">Tools</a>
-      <a href="../certifications.html">Certifications</a>
+        <button
+            class="menu-toggle"
+            id="mobile-menu"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-controls="nav-links"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../current-work.html">Current Work</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../tools.html">Tools</a>
+            <a href="../certifications.html">Certifications</a>
+        </div>
+
     </div>
-  </div>
 </nav>
 
 <div class="container section">
@@ -73,6 +84,59 @@ alert triage, SIEM analysis, and incident response.
     </div>
   </div>
 </footer>
+<script>
+    const menuBtn = document.getElementById("mobile-menu");
+    const navLinks = document.getElementById("nav-links");
 
+    function closeMenu() {
+        navLinks.classList.remove("active");
+        menuBtn.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open navigation menu");
+    }
+
+    menuBtn.addEventListener("click", () => {
+        const menuIsOpen = navLinks.classList.toggle("active");
+
+        menuBtn.classList.toggle("active", menuIsOpen);
+        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+
+        menuBtn.setAttribute(
+            "aria-label",
+            menuIsOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+        );
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            navLinks.classList.contains("active")
+        ) {
+            closeMenu();
+            menuBtn.focus();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        const clickedInsideMenu = navLinks.contains(event.target);
+        const clickedMenuButton = menuBtn.contains(event.target);
+
+        if (!clickedInsideMenu && !clickedMenuButton) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+    });
+</script>
 </body>
 </html>
