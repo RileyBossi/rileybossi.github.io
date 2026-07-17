@@ -2,18 +2,172 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Certifications | Riley Bossi</title>
 
+    <meta
+        name="description"
+        content="Cybersecurity, networking, cloud, and Microsoft certifications earned by Riley Bossi."
+    >
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .certifications-page {
+            padding: 55px 0 80px;
+        }
+
+        .certifications-header {
+            max-width: 760px;
+            margin-bottom: 34px;
+        }
+
+        .certifications-header h1 {
+            margin-bottom: 12px;
+            color: #ffffff;
+            font-size: clamp(2.2rem, 5vw, 3.3rem);
+        }
+
+        .certifications-header p {
+            color: #aebfce;
+            font-size: 1.03rem;
+            line-height: 1.7;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .certification-card {
+            position: relative;
+            overflow: hidden;
+            padding: 27px;
+            background: linear-gradient(
+                145deg,
+                rgba(20, 30, 41, 0.98),
+                rgba(13, 21, 29, 0.98)
+            );
+            border: 1px solid #22303d;
+            border-radius: 14px;
+        }
+
+        .certification-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                #55c2ff,
+                transparent
+            );
+        }
+
+        .certification-card.featured {
+            grid-column: 1 / -1;
+        }
+
+        .certification-label {
+            display: inline-block;
+            margin-bottom: 9px;
+            color: #55c2ff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .certification-card h2 {
+            margin-bottom: 11px;
+            color: #ffffff;
+            font-size: 1.35rem;
+            line-height: 1.3;
+        }
+
+        .certification-card p {
+            margin-bottom: 16px;
+            color: #aebfce;
+            line-height: 1.65;
+        }
+
+        .certification-card ul {
+            margin: 0;
+            padding-left: 19px;
+            color: #d3e0e9;
+        }
+
+        .certification-card li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .certification-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .certification-card li::marker {
+            color: #55c2ff;
+        }
+
+        .certification-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .certification-tag {
+            padding: 6px 10px;
+            background: rgba(85, 194, 255, 0.07);
+            border: 1px solid rgba(85, 194, 255, 0.2);
+            border-radius: 999px;
+            color: #8edaff;
+            font-size: 0.76rem;
+        }
+
+        @media (max-width: 750px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certification-card.featured {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .certifications-page {
+                padding: 35px 0 55px;
+            }
+
+            .certification-card {
+                padding: 22px;
+                border-radius: 11px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
     <div class="container nav-container">
 
-        <a href="index.html" class="logo">Riley Bossi</a>
+        <a href="index.html" class="logo">
+            Riley Bossi
+        </a>
 
         <button
             class="menu-toggle"
@@ -33,137 +187,193 @@
             <a href="current-work.html">Current Work</a>
             <a href="projects.html">Projects</a>
             <a href="tools.html">Tools</a>
-            <a href="certifications.html">Certifications</a>
+            <a href="certifications.html" class="active">
+                Certifications
+            </a>
         </div>
 
     </div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
+<main class="certifications-page">
 
     <div class="container">
 
-        <h1 class="section-title">Certifications</h1>
+        <header class="certifications-header">
 
-        <div class="card">
-
-            <h3>CompTIA CySA+</h3>
+            <h1>Certifications</h1>
 
             <p>
-                Focused on threat detection, SIEM analysis, vulnerability management,
-                and incident response.
+                Certifications covering cybersecurity operations, networking,
+                identity, cloud security, and incident response, reinforced
+                through hands-on labs and professional IT experience.
             </p>
 
-            <p>
-                What sets this apart is my hands-on reinforcement through
-                TryHackMe SOC Level 1 and SOC Level 2 labs, where I performed:
-            </p>
+        </header>
 
-            <ul>
-                <li>Real-time alert triage and escalation</li>
-                <li>Phishing investigation and IOC analysis</li>
-                <li>Malware behavior analysis</li>
-                <li>SIEM correlation using Splunk and ELK</li>
-                <li>Network traffic analysis with Wireshark</li>
-            </ul>
+        <div class="certifications-grid">
 
-        </div>
+            <article class="certification-card featured">
 
-        <div class="card">
+                <span class="certification-label">
+                    Cybersecurity Operations
+                </span>
 
-            <h3>CompTIA Security+</h3>
+                <h2>CompTIA CySA+</h2>
 
-            <p>
-                Built a strong foundation in cybersecurity principles including:
-            </p>
+                <p>
+                    Focused on security monitoring, threat detection,
+                    vulnerability management, and incident response.
+                </p>
 
-            <ul>
-                <li>Network security fundamentals</li>
-                <li>Identity and access management</li>
-                <li>Risk management and mitigation</li>
-                <li>Cryptography basics</li>
-                <li>Secure architecture design</li>
-            </ul>
+                <ul>
+                    <li>Security alert triage and investigation</li>
+                    <li>SIEM and log correlation</li>
+                    <li>Vulnerability analysis and remediation</li>
+                    <li>Threat intelligence and IOC analysis</li>
+                    <li>Incident response procedures</li>
+                </ul>
 
-        </div>
+                <div class="certification-tags">
+                    <span class="certification-tag">SIEM</span>
+                    <span class="certification-tag">Threat Detection</span>
+                    <span class="certification-tag">Incident Response</span>
+                    <span class="certification-tag">Vulnerability Management</span>
+                </div>
 
-        <div class="card">
+            </article>
 
-            <h3>CompTIA Network+</h3>
+            <article class="certification-card">
 
-            <p>
-                Developed deep understanding of networking concepts including:
-            </p>
+                <span class="certification-label">
+                    Cybersecurity Fundamentals
+                </span>
 
-            <ul>
-                <li>Routing and switching</li>
-                <li>DNS, DHCP, and IP addressing</li>
-                <li>Subnetting and VLAN design</li>
-                <li>Network troubleshooting</li>
-                <li>Infrastructure fundamentals</li>
-            </ul>
+                <h2>CompTIA Security+</h2>
 
-        </div>
+                <p>
+                    Established a broad foundation in security concepts,
+                    controls, architecture, and risk management.
+                </p>
 
-        <div class="card">
+                <ul>
+                    <li>Network and endpoint security</li>
+                    <li>Identity and access management</li>
+                    <li>Risk management and mitigation</li>
+                    <li>Cryptography and secure protocols</li>
+                </ul>
 
-            <h3>Microsoft SC-900</h3>
+            </article>
 
-            <p>
-                Covered Microsoft security, compliance, identity,
-                and Zero Trust principles including:
-            </p>
+            <article class="certification-card">
 
-            <ul>
-                <li>Microsoft Entra ID (Azure AD)</li>
-                <li>Conditional Access policies</li>
-                <li>MFA enforcement</li>
-                <li>Security posture management</li>
-            </ul>
+                <span class="certification-label">
+                    Networking
+                </span>
 
-        </div>
+                <h2>CompTIA Network+</h2>
 
-        <div class="card">
+                <p>
+                    Developed practical knowledge of networking,
+                    infrastructure, and troubleshooting.
+                </p>
 
-            <h3>Google Cybersecurity Professional Certificate</h3>
+                <ul>
+                    <li>Routing, switching, and wireless networking</li>
+                    <li>DNS, DHCP, and IP addressing</li>
+                    <li>Subnetting and VLANs</li>
+                    <li>Network troubleshooting</li>
+                </ul>
 
-            <p>
-                Strengthened practical cybersecurity skills in:
-            </p>
+            </article>
 
-            <ul>
-                <li>Linux system administration</li>
-                <li>SQL querying for security analysis</li>
-                <li>SIEM fundamentals</li>
-                <li>Threat detection workflows</li>
-                <li>Incident response basics</li>
-            </ul>
+            <article class="certification-card">
+
+                <span class="certification-label">
+                    Microsoft Security
+                </span>
+
+                <h2>Microsoft SC-900</h2>
+
+                <p>
+                    Covered Microsoft security, identity, compliance,
+                    and Zero Trust concepts.
+                </p>
+
+                <ul>
+                    <li>Microsoft Entra ID</li>
+                    <li>Authentication and MFA</li>
+                    <li>Conditional Access</li>
+                    <li>Microsoft security and compliance solutions</li>
+                </ul>
+
+            </article>
+
+            <article class="certification-card">
+
+                <span class="certification-label">
+                    Professional Certificate
+                </span>
+
+                <h2>Google Cybersecurity Certificate</h2>
+
+                <p>
+                    Provided hands-on practice with core security tools,
+                    investigation methods, and analyst workflows.
+                </p>
+
+                <ul>
+                    <li>Linux and command-line administration</li>
+                    <li>SQL for security analysis</li>
+                    <li>SIEM and log investigation</li>
+                    <li>Threat detection and incident response</li>
+                </ul>
+
+            </article>
 
         </div>
 
     </div>
 
-</section>
+</main>
 
-<!-- FOOTER -->
 <footer>
 
     <div class="container footer-content">
 
         <div>
             <h3>Riley Bossi</h3>
-            <p>Cybersecurity • Systems Administration • IT Operations</p>
+
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
         </div>
 
         <div>
             <p>
-                Email: <a href="mailto:rileybossi2005@gmail.com">rileybossi2005@gmail.com</a>
+                Email:
+                <a href="mailto:rileybossi2005@gmail.com">
+                    rileybossi2005@gmail.com
+                </a>
             </p>
 
             <p>
-                <a href="https://www.linkedin.com/in/riley-bossi-b08729295?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">
-                    LinkedIn Profile
+                <a
+                    href="https://www.linkedin.com/in/riley-bossi-b08729295"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/RileyBossi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
                 </a>
             </p>
         </div>
@@ -172,23 +382,41 @@
 
 </footer>
 
-<!-- SCRIPT -->
 <script>
-    const menuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
+    const menuBtn =
+        document.getElementById("mobile-menu");
+
+    const navLinks =
+        document.getElementById("nav-links");
 
     function closeMenu() {
         navLinks.classList.remove("active");
         menuBtn.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
     }
 
     menuBtn.addEventListener("click", () => {
-        const menuIsOpen = navLinks.classList.toggle("active");
+        const menuIsOpen =
+            navLinks.classList.toggle("active");
 
-        menuBtn.classList.toggle("active", menuIsOpen);
-        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
+        menuBtn.classList.toggle(
+            "active",
+            menuIsOpen
+        );
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            menuIsOpen.toString()
+        );
 
         menuBtn.setAttribute(
             "aria-label",
@@ -198,34 +426,54 @@
         );
     });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+    navLinks
+        .querySelectorAll("a")
+        .forEach((link) => {
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+        });
 
-    document.addEventListener("keydown", (event) => {
-        if (
-            event.key === "Escape" &&
-            navLinks.classList.contains("active")
-        ) {
-            closeMenu();
-            menuBtn.focus();
+    document.addEventListener(
+        "keydown",
+        (event) => {
+            if (
+                event.key === "Escape" &&
+                navLinks.classList.contains("active")
+            ) {
+                closeMenu();
+                menuBtn.focus();
+            }
         }
-    });
+    );
 
-    document.addEventListener("click", (event) => {
-        const clickedInsideMenu = navLinks.contains(event.target);
-        const clickedMenuButton = menuBtn.contains(event.target);
+    document.addEventListener(
+        "click",
+        (event) => {
+            const clickedInsideMenu =
+                navLinks.contains(event.target);
 
-        if (!clickedInsideMenu && !clickedMenuButton) {
-            closeMenu();
+            const clickedMenuButton =
+                menuBtn.contains(event.target);
+
+            if (
+                !clickedInsideMenu &&
+                !clickedMenuButton
+            ) {
+                closeMenu();
+            }
         }
-    });
+    );
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
+    window.addEventListener(
+        "resize",
+        () => {
+            if (window.innerWidth > 900) {
+                closeMenu();
+            }
         }
-    });
+    );
 </script>
 
 </body>
