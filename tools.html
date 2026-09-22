@@ -1,28 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"Person",
-      "name":"Riley Bossi",
-      "url":"https://YOURDOMAIN.com",
-      "jobTitle":"IT Support Technician",
-      "sameAs":[
-        "https://github.com/RileyBossi",
-        "https://www.linkedin.com/in/riley-bossi-b08729295"
-      ]
-    }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools | Riley Bossi</title>
+
+    <title>Job Scam Scanner | Riley Bossi</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .scanner-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .scanner-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            margin-top: 8px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            background: transparent;
+            color: inherit;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        textarea.scanner-input {
+            min-height: 220px;
+            resize: vertical;
+        }
+
+        .scanner-section {
+            margin-top: 20px;
+        }
+
+        .scanner-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .scanner-controls button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .scanner-results {
+            display: none;
+        }
+
+        .scanner-results.visible {
+            display: block;
+        }
+
+        .risk-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .risk-meter {
+            height: 14px;
+            margin: 15px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(128, 128, 128, 0.25);
+        }
+
+        .risk-meter-fill {
+            height: 100%;
+            width: 0;
+        }
+
+        .risk-low {
+            background: #2eaf5d;
+        }
+
+        .risk-moderate {
+            background: #d5a000;
+        }
+
+        .risk-high {
+            background: #e16a2d;
+        }
+
+        .risk-critical {
+            background: #c93434;
+        }
+
+        .finding {
+            padding: 12px;
+            margin-top: 10px;
+            border-left: 4px solid #888;
+            background: rgba(128, 128, 128, 0.08);
+        }
+
+        .finding-high {
+            border-color: #c93434;
+        }
+
+        .finding-medium {
+            border-color: #d5a000;
+        }
+
+        .finding-low {
+            border-color: #888;
+        }
+
+        .finding-info {
+            border-color: #4f8fd6;
+        }
+
+        .finding p {
+            margin-bottom: 0;
+        }
+
+        .scanner-status {
+            margin-top: 15px;
+        }
+
+        .privacy-note {
+            margin-top: 15px;
+            padding: 12px;
+            border-left: 4px solid #2eaf5d;
+            background: rgba(46, 175, 93, 0.08);
+        }
+
+        .domain-analysis {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #4f8fd6;
+            background: rgba(79, 143, 214, 0.08);
+        }
+
+        .domain-analysis h3 {
+            margin-top: 0;
+        }
+
+        .domain-analysis p {
+            margin: 6px 0;
+        }
+    </style>
 </head>
+
+
 <body>
 
-<!-- NAV -->
 <nav>
     <div class="container nav-container">
 
@@ -52,134 +178,244 @@
     </div>
 </nav>
 
-<!-- CONTENT -->
-<section class="section">
-    <div class="container">
-        <h1 class="section-title">Tools</h1>
-            <div class="card">
 
-            <h3>DNS Record Query Tool (PowerShell)</h3>
+<main>
 
-            <p>
-                A custom PowerShell DNS troubleshooting utility I created to quickly gather
-                DNS records for domains and subdomains in one place. I originally built this
-                tool while working in MSP environments to simplify troubleshooting and verify
-                whether clients correctly configured DNS records such as SPF, DKIM, and DMARC.
-            </p>
+    <div class="container scanner-container">
+
+        <div class="card">
+
+            <h1>Job Posting Scam Scanner</h1>
 
             <p>
-                Instead of manually querying records one-by-one, this script consolidates
-                standard DNS records, email security records, and optional subdomain lookups
-                into a single organized output. This made it significantly faster to validate
-                mail flow configurations, identify missing records, and troubleshoot DNS-related issues.
+                Scan job postings for common indicators of employment scams,
+                phishing, fake recruiters, and financial fraud.
             </p>
 
-            <h4 style="margin-top:20px;">What The Tool Does</h4>
-
-            <ul>
-                <li>Queries standard DNS records (A, AAAA, MX, NS, TXT, CNAME, SOA)</li>
-                <li>Checks SPF, DMARC, and DKIM records</li>
-                <li>Supports custom subdomain enumeration</li>
-                <li>Supports querying against custom DNS servers</li>
-                <li>Formats results cleanly for troubleshooting and auditing</li>
-            </ul>
-
-            <h4 style="margin-top:20px;">Why I Built It</h4>
-
-            <p>
-                I built this script because I frequently needed a fast way to verify whether
-                DNS records had been added correctly during migrations, email security deployments,
-                and troubleshooting scenarios. Having everything consolidated into a single
-                output reduced repetitive manual lookups and improved troubleshooting efficiency.
-            </p>
-
-            <div class="button-group">
-
-                <a href="downloads/Get-DnsRecords.ps1" class="btn" download>
-                    Download PS1
-                </a>
-
-                <a href="dns-tool-source.html" class="btn">
-                    View Source Code
-                </a>
-
+            <div class="privacy-note">
+                <strong>Privacy:</strong>
+                Pasted text and uploaded files are processed in your browser. 
+                Submitted URLs are sent to the scanner backend for domain and 
+                public page-content analysis.
             </div>
 
         </div>
+
         <div class="card">
-
-<h3>Job Posting Scam Scanner</h3>
-
-<p>
-    A browser-based security tool designed to help identify common warning signs
-    found in fraudulent or malicious job postings. The scanner analyzes the contents
-    of a job posting and checks for indicators commonly associated with employment
-    scams, phishing attempts, and other suspicious recruiting activity.
-</p>
-
-<p>
-    The tool uses an explainable, rule-based scoring system rather than simply
-    labeling a posting as legitimate or fraudulent. Detected indicators are presented
-    alongside a risk score so users can understand exactly what caused a posting
-    to be flagged.
-</p>
-
-<h4 style="margin-top:20px;">What The Tool Checks</h4>
-
-<ul>
-    <li>Suspicious recruiter email addresses and domains</li>
-    <li>Requests for payments, checks, or equipment purchases</li>
-    <li>Requests for sensitive personal or financial information</li>
-    <li>Messaging-only interviews using platforms such as Telegram or WhatsApp</li>
-    <li>Urgency, pressure tactics, and suspicious recruiting language</li>
-    <li>Unusual compensation or employment claims</li>
-    <li>Links and contact information that may require additional verification</li>
-</ul>
-
-<h4 style="margin-top:20px;">Privacy Focused</h4>
-
-<p>
-    The initial version is designed to perform analysis directly within the browser.
-    This allows job postings to be scanned without requiring their contents to be
-    stored on an external server.
-</p>
-
-<div class="button-group">
-
-    <a href="job-scam-scanner.html" class="btn">
-        Open Job Scam Scanner
-    </a>
-
-</div>
-
-</div>
-
+             <div class="privacy-note"><strong>Development Notice:</strong> 
+            This tool is actively under development. Detection methods, scoring,
+            and domain analysis are continuously being tested and improved. Results
+            may include false positives or missed indicators and should not be 
+            treated as a definitive determination that a job posting is legitimate
+            or fraudulent.
+            </div>
+         </div>
 
 
         <div class="card">
 
-            <h3>Status</h3>
+            <h2>Scan Posting</h2>
+
+            <div class="scanner-section">
+
+                <label for="job-posting">
+                    <strong>Paste Text</strong>
+                </label>
+
+                <textarea
+                    id="job-posting"
+                    class="scanner-input"
+                    placeholder="Paste the job posting or recruiter message..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="scanner-section">
+
+                <label for="job-file">
+                    <strong>Upload File</strong>
+                </label>
+
+                <input
+                    type="file"
+                    id="job-file"
+                    class="scanner-input"
+                    accept=".txt,.pdf,.docx"
+                >
+
+                <small>
+                    TXT, PDF, and DOCX supported.
+                </small>
+
+            </div>
+
+
+            <div class="scanner-section">
+
+                <label for="job-url">
+                    <strong>Job Posting Link</strong>
+                </label>
+
+                <input
+                    type="url"
+                    id="job-url"
+                    class="scanner-input"
+                    placeholder="https://example.com/job-posting"
+                >
+
+                <small>
+                    Domain, DNS, redirects, registration age, and publicly accessible page text
+                    will be checked automatically.
+                </small>
+
+            </div>
+
+
+            <div class="scanner-controls">
+
+                <button
+                    type="button"
+                    class="btn"
+                    id="scan-button"
+                >
+                    Scan Posting
+                </button>
+
+                <button
+                    type="button"
+                    class="btn"
+                    id="clear-button"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+            <p
+                class="scanner-status"
+                id="scanner-status"
+            ></p>
+
+        </div>
+
+
+        <div
+            class="card scanner-results"
+            id="scanner-results"
+        >
+
+            <h2>Results</h2>
+
+            <div
+                class="risk-score"
+                id="risk-score"
+            >
+                0/100
+            </div>
+
+            <h3 id="risk-label">
+                Low Risk
+            </h3>
+
+            <div class="risk-meter">
+
+                <div
+                    class="risk-meter-fill"
+                    id="risk-meter-fill"
+                ></div>
+
+            </div>
+
+            <p id="risk-summary"></p>
+
+
+            <div
+                class="domain-analysis"
+                id="domain-analysis"
+                style="display:none;"
+            >
+
+                <h3>Domain Analysis</h3>
+
+                <p>
+                    <strong>Platform:</strong>
+                    <span id="domain-platform">
+                        Unknown
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Analyzed Domain:</strong>
+                    <span id="domain-name">
+                        Unknown
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Domain Age:</strong>
+                    <span id="domain-age">
+                        Unknown
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Redirect:</strong>
+                    <span id="domain-redirect">
+                        Unknown
+                    </span>
+                </p>
+
+                <p>
+                    <strong>DNS:</strong>
+                    <span id="domain-dns">
+                        Unknown
+                    </span>
+                </p>
+
+            </div>
+
+
+            <h3>Detected Indicators</h3>
+
+            <div id="findings"></div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Disclaimer</h2>
 
             <p>
-                This section is actively evolving as I continue building my home lab,
-                expanding cloud security experience, and working with enterprise tools in production environments.
+                This scanner identifies common warning signs and does not determine
+                whether a job posting is definitively legitimate or fraudulent.
+                The score reflects detected risk indicators and is not a probability that the posting is fraudulent. Always
+                independently verify the employer before sending money, credentials,
+                or sensitive personal information.
             </p>
 
         </div>
 
     </div>
 
-</section>
+</main>
 
-<!-- FOOTER -->
+
 <footer>
 
     <div class="container footer-content">
 
         <div>
+
             <h3>Riley Bossi</h3>
-            <p>Cybersecurity • Systems Administration • Cloud • IT Operations</p>
+
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
+
         </div>
+
 
         <div>
 
@@ -216,61 +452,1708 @@
 
 </footer>
 
-<!-- SCRIPT -->
-<script>
-    const menuBtn = document.getElementById("mobile-menu");
-    const navLinks = document.getElementById("nav-links");
 
-    function closeMenu() {
-        navLinks.classList.remove("active");
-        menuBtn.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+
+
+<script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+const scamRules = [
+    {
+    title: "Check Deposit Request",
+    severity: "high",
+    score: 30,
+    patterns: [
+        /deposit (a|the|our|this|your) (cashier'?s |company |certified )?check/i,
+        /mobile deposit (a|the|our|this|your)? ?check/i,
+        /cash (a|the|our|this|your) (cashier'?s |company |certified )?check/i,
+        /we (will|will be|are going to) (mail|send|issue) (you )?(a|the) check/i,
+        /(mail|send|issue) (you )?(a|the) (cashier'?s |company |certified )?check/i,
+        /check.*purchase.*equipment/i,
+        /check.*purchase.*laptop/i,
+        /check.*purchase.*software/i
+    ],
+    description:
+        "The posting appears to instruct the applicant to receive, deposit, or cash a check."
+    },
+    {
+    title: "Recruiting Through Phone Call",
+    severity: "low",
+    score: 5,
+    patterns: [
+        /call.*for.*interview/i,
+        /call.*to.*schedule.*interview/i,
+        /call.*interview.*times/i,
+        /call.*hiring manager/i,
+        /call.*recruiter/i,
+        /phone.*to.*schedule.*interview/i
+    ],
+    description:
+        "The posting directs applicants to call a phone number to arrange an interview. This can be legitimate but warrants additional verification when combined with other indicators."
+    },
+
+    {
+        title: "Equipment Purchase Request",
+        severity: "high",
+        score: 25,
+        patterns: [
+            /purchase.*equipment/i,
+            /buy.*equipment/i,
+            /purchase.*laptop/i,
+            /buy.*laptop/i,
+            /purchase.*computer/i,
+            /purchase.*software/i,
+            /approved.*vendor/i,
+            /equipment vendor/i
+        ],
+        description:
+            "The applicant may be asked to purchase equipment or software."
+    },
+
+    {
+        title: "Gift Card Request",
+        severity: "high",
+        score: 35,
+        patterns: [
+            /gift card/i,
+            /google play card/i,
+            /steam card/i,
+            /apple gift card/i,
+            /itunes card/i
+        ],
+        description:
+            "Gift card requests are a strong financial scam indicator."
+    },
+
+    {
+        title: "Banking Information Request",
+        severity: "high",
+        score: 25,
+        patterns: [
+            /bank account/i,
+            /banking information/i,
+            /routing number/i,
+            /account number/i,
+            /online banking/i,
+            /bank login/i
+        ],
+        description:
+            "The posting references sensitive banking information."
+    },
+
+    {
+        title: "Sensitive Personal Information",
+        severity: "high",
+        score: 20,
+        patterns: [
+            /social security number/i,
+            /\bssn\b/i,
+            /passport/i,
+            /driver'?s license/i,
+            /copy.*license/i,
+            /copy.*id/i,
+            /photo.*id/i
+        ],
+        description:
+            "The posting requests sensitive identity information."
+    },
+
+    {
+        title: "Messaging App Interview",
+        severity: "medium",
+        score: 15,
+        patterns: [
+            /telegram/i,
+            /whatsapp/i,
+            /\bsignal\b/i,
+            /text interview/i,
+            /chat interview/i,
+            /interview.*telegram/i,
+            /interview.*whatsapp/i
+        ],
+        description:
+            "The interview may take place primarily through a messaging platform."
+    },
+
+    {
+        title: "Immediate Job Offer",
+        severity: "medium",
+        score: 15,
+        patterns: [
+            /you are hired/i,
+            /you have been hired/i,
+            /you have been selected/i,
+            /selected for immediate employment/i,
+            /immediate employment/i,
+            /immediate hire/i,
+            /start immediately/i
+        ],
+        description:
+            "The posting may indicate an unusually fast hiring process."
+    },
+
+    {
+        title: "Urgency or Pressure",
+        severity: "medium",
+        score: 12,
+        patterns: [
+            /respond immediately/i,
+            /reply immediately/i,
+            /act immediately/i,
+            /only available for 24 hours/i,
+            /available for 24 hours/i,
+            /within 24 hours/i,
+            /urgent response/i,
+            /limited time/i
+        ],
+        description:
+            "The posting uses urgency or pressure to encourage a quick response."
+    },
+
+    {
+        title: "Money Transfer Request",
+        severity: "high",
+        score: 30,
+        patterns: [
+            /transfer money/i,
+            /wire transfer/i,
+            /western union/i,
+            /moneygram/i,
+            /process payments/i,
+            /receive payments/i,
+            /send payments/i
+        ],
+        description:
+            "The role may involve transferring or processing money."
+    },
+
+    {
+        title: "Cryptocurrency Request",
+        severity: "high",
+        score: 30,
+        patterns: [
+            /bitcoin/i,
+            /cryptocurrency/i,
+            /crypto wallet/i,
+            /ethereum/i,
+            /\busdt\b/i
+        ],
+        description:
+            "The posting references cryptocurrency or a crypto wallet."
+    },
+
+    {
+        title: "Package Reshipping",
+        severity: "high",
+        score: 30,
+        patterns: [
+            /reship/i,
+            /re-ship/i,
+            /package forwarding/i,
+            /receive packages/i,
+            /inspect packages/i
+        ],
+        description:
+            "The role may involve receiving and forwarding packages."
+    },
+
+    {
+        title: "Personal Email Address",
+        severity: "low",
+        score: 10,
+        patterns: [
+            /@gmail\.com/i,
+            /@yahoo\.com/i,
+            /@hotmail\.com/i,
+            /@outlook\.com/i,
+            /@aol\.com/i
+        ],
+        description:
+            "A personal email provider appears in the posting."
+    },
+
+    {
+        title: "Upfront Fee",
+        severity: "high",
+        score: 35,
+        patterns: [
+            /application fee/i,
+            /training fee/i,
+            /registration fee/i,
+            /processing fee/i,
+            /pay.*fee/i
+        ],
+        description:
+            "The posting appears to request an upfront payment."
+    },
+
+    {
+        title: "Credential Request",
+        severity: "high",
+        score: 35,
+        patterns: [
+            /your password/i,
+            /send.*password/i,
+            /provide.*password/i,
+            /login credentials/i,
+            /email credentials/i,
+            /verification code/i,
+            /one[- ]time password/i,
+            /\botp\b/i
+        ],
+        description:
+            "The posting appears to request login or authentication information."
+    },
+
+    {
+        title: "Recruiting Through Text Message",
+        severity: "low",
+        score: 10,
+        patterns: [
+            /please text.*interview/i,
+            /text.*for interview/i,
+            /text.*interview times/i,
+            /text.*to schedule.*interview/i
+        ],
+        description:
+            "The posting directs applicants to arrange an interview through text messaging."
+    },
+
+    {
+        title: "Unusually High Earnings Claims",
+        severity: "low",
+        score: 6,
+        patterns: [
+            /6 and 7 figures/i,
+            /six and seven figures/i,
+            /six figure income/i,
+            /seven figure income/i,
+            /\$100k\+.*per month/i,
+            /\$100,000\+.*per month/i,
+            /income potential is unlimited/i,
+            /unlimited income/i,
+            /unlimited earning/i,
+            /uncapped earning/i,
+            /\$120,?000.*\$240,?000/i,
+            /\$60k.*\$250k/i,
+            /\$[1-9][0-9]{2},000.*\$[1-9][0-9]{2},000/i
+        ],
+        description:
+            "The posting emphasizes unusually high, broad, or unlimited earning potential."
+    },
+
+    {
+        title: "Aggressive Sales / Earnings Language",
+        severity: "low",
+        score: 2,
+        patterns: [
+            /crush all goals/i,
+            /dominate/i,
+            /rise to the top/i,
+            /become.*legend/i,
+            /close deals like a machine/i,
+            /get out of the rat race/i
+        ],
+        description:
+            "The advertisement uses aggressive motivational or earnings-focused language."
+    },
+
+    {
+        title: "Mass Hiring Claim",
+        severity: "low",
+        score: 2,
+        patterns: [
+            /huge amount of positions/i,
+            /huge number of positions/i,
+            /many positions to fill/i
+        ],
+        description:
+            "The employer claims to have an unusually large number of positions available."
+    },
+
+    {
+        title: "Commission / Residual Compensation Emphasis",
+        severity: "low",
+        score: 5,
+        patterns: [
+            /immediate payment/i,
+            /paid immediately/i,
+            /receive.*immediate payment/i,
+            /residual income/i,
+            /residual commissions/i,
+            /reoccurring payment/i,
+            /recurring commission/i
+        ],
+        description:
+            "The posting strongly emphasizes immediate, commission-based, or residual compensation."
     }
 
-    menuBtn.addEventListener("click", () => {
-        const menuIsOpen = navLinks.classList.toggle("active");
+];
 
-        menuBtn.classList.toggle("active", menuIsOpen);
-        menuBtn.setAttribute("aria-expanded", menuIsOpen.toString());
 
-        menuBtn.setAttribute(
-            "aria-label",
-            menuIsOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+function addCombinationFindings(text, findings) {
+    const lowerText =
+        text.toLowerCase();
+
+
+    const hasHighIncome =
+        lowerText.includes("6 and 7 figures") ||
+        lowerText.includes("six figure income") ||
+        lowerText.includes("seven figure income") ||
+        lowerText.includes("income potential is unlimited") ||
+        lowerText.includes("$100k+ per month") ||
+        lowerText.includes("$100,000+ per month");
+
+
+    const hasLowExperience =
+        lowerText.includes("zero sales experience") ||
+        lowerText.includes("no sales experience") ||
+        lowerText.includes("no experience required") ||
+        lowerText.includes("no experience necessary") ||
+        lowerText.includes("learning curve is 1-2 days") ||
+        lowerText.includes("very simple");
+
+
+    const hasTextRecruiting =
+        lowerText.includes("please text") &&
+        lowerText.includes("interview");
+
+
+    if (
+        hasHighIncome &&
+        hasLowExperience
+    ) {
+        findings.push({
+            title: "High Earnings With Minimal Experience",
+            severity: "low",
+            score: 6,
+            description:
+                "The posting combines unusually high earning claims with very little required experience or training."
+        });
+    }
+
+
+    if (
+        hasHighIncome &&
+        hasTextRecruiting
+    ) {
+        findings.push({
+            title: "High Earnings + Informal Recruiting",
+            severity: "low",
+            score: 4,
+            description:
+                "The posting combines unusually high earning claims with interview scheduling through text messaging."
+        });
+    }
+}
+
+async function scanPosting() {
+    const scanButton =
+        document.getElementById(
+            "scan-button"
         );
-    });
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+    const textInput =
+        document
+            .getElementById(
+                "job-posting"
+            )
+            .value
+            .trim();
 
-    document.addEventListener("keydown", (event) => {
+    const file =
+        document
+            .getElementById(
+                "job-file"
+            )
+            .files[0];
+
+    const jobUrl =
+        document
+            .getElementById(
+                "job-url"
+            )
+            .value
+            .trim();
+
+
+    let text =
+        textInput;
+
+    let findings =
+        [];
+
+
+    setStatus("");
+
+    clearDomainAnalysis();
+
+
+    if (scanButton) {
+        scanButton.disabled =
+            true;
+
+        scanButton.textContent =
+            "Scanning...";
+    }
+
+
+    try {
         if (
-            event.key === "Escape" &&
-            navLinks.classList.contains("active")
+            !textInput &&
+            !file &&
+            !jobUrl
         ) {
-            closeMenu();
-            menuBtn.focus();
-        }
-    });
+            setStatus(
+                "Paste text, upload a file, or enter a URL."
+            );
 
-    document.addEventListener("click", (event) => {
-        const clickedInsideMenu = navLinks.contains(event.target);
-        const clickedMenuButton = menuBtn.contains(event.target);
-
-        if (!clickedInsideMenu && !clickedMenuButton) {
-            closeMenu();
+            return;
         }
-    });
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 900) {
-            closeMenu();
+
+        if (file) {
+            try {
+                setStatus(
+                    "Reading file..."
+                );
+
+                const fileText =
+                    await extractFileText(
+                        file
+                    );
+
+                text +=
+                    " " + fileText;
+            }
+
+            catch (error) {
+                setStatus(
+                    "Unable to read this file. Use TXT, PDF, or DOCX."
+                );
+
+                return;
+            }
         }
-    });
+
+
+        if (jobUrl) {
+            if (
+                !isValidUrl(
+                    jobUrl
+                )
+            ) {
+                setStatus(
+                    "Enter a valid HTTP or HTTPS URL."
+                );
+
+                return;
+            }
+
+
+            findings =
+                findings.concat(
+                    scanUrl(
+                        jobUrl
+                    )
+                );
+
+
+            try {
+                setStatus(
+                    "Performing domain verification..."
+                );
+
+                const domainResult =
+                    await checkDomainWithBackend(
+                        jobUrl
+                    );
+
+
+                displayDomainAnalysis(
+                    domainResult
+                );
+
+
+                if (
+                    domainResult.findings &&
+                    Array.isArray(
+                        domainResult.findings
+                    )
+                ) {
+                    findings =
+                        findings.concat(
+                            domainResult.findings
+                        );
+                }
+
+
+                if (
+                    domainResult.pageContent &&
+                    domainResult.pageContent.success &&
+                    domainResult.pageContent.text
+                ) {
+                    text +=
+                        " " +
+                        domainResult.pageContent.text;
+
+
+                    setStatus(
+                        "Job posting retrieved. Scanning page content..."
+                    );
+                }
+
+                else {
+                    setStatus(
+                        "Domain verification completed, but the job page content could not be retrieved. Paste the description for a full content scan."
+                    );
+                }
+            }
+
+            catch (error) {
+                console.error(
+                    "Domain verification failed:",
+                    error
+                );
+
+                setStatus(
+                    "Domain verification could not be completed."
+                );
+            }
+        }
+
+
+        findings =
+    findings.concat(
+        scanText(
+            text
+        )
+    );
+
+
+addCombinationFindings(
+    text,
+    findings
+);
+
+
+const embeddedUrlResult =
+    await scanUrlsFromText(
+        text
+    );
+
+
+findings =
+    findings.concat(
+        embeddedUrlResult.findings
+    );
+
+const recruiterEmailFindings =
+    await scanRecruiterEmails(
+        text
+    );
+
+
+findings =
+    findings.concat(
+        recruiterEmailFindings
+    );
+
+
+        findings =
+            removeDuplicates(
+                findings
+            );
+
+
+        let score =
+            0;
+
+
+        findings.forEach(
+            function(finding) {
+                score +=
+                    finding.score;
+            }
+        );
+
+
+        score =
+            Math.min(
+                score,
+                100
+            );
+
+
+        displayResults(
+            findings,
+            score
+        );
+    }
+
+    finally {
+        if (scanButton) {
+            scanButton.disabled =
+                false;
+
+            scanButton.textContent =
+                "Scan Posting";
+        }
+    }
+}
+
+
+
+function scanText(text) {
+    const findings =
+        [];
+
+
+    scamRules.forEach(
+        function(rule) {
+            const matched =
+                rule.patterns.some(
+                    function(pattern) {
+                        return pattern.test(
+                            text
+                        );
+                    }
+                );
+
+
+            if (matched) {
+                findings.push(
+                    rule
+                );
+            }
+        }
+    );
+
+
+    return findings;
+}
+
+
+async function checkDomainWithBackend(jobUrl) {
+    const workerUrl =
+        "https://job-scam-scanner-api.rileybossi2005.workers.dev/";
+
+
+    const response =
+        await fetch(
+            workerUrl +
+            "?url=" +
+            encodeURIComponent(
+                jobUrl
+            )
+        );
+
+
+    if (!response.ok) {
+        throw new Error(
+            "Domain analysis failed"
+        );
+    }
+
+
+    return await response.json();
+}
+
+
+function scanUrl(value) {
+    const findings =
+        [];
+
+    const url =
+        new URL(
+            value
+        );
+
+
+    if (
+        url.protocol ===
+        "http:"
+    ) {
+        findings.push({
+            title: "URL Does Not Use HTTPS",
+            severity: "low",
+            score: 15,
+            description:
+                "The submitted link uses an unencrypted HTTP connection."
+        });
+    }
+
+
+    if (
+        /^\d{1,3}(\.\d{1,3}){3}$/.test(
+            url.hostname
+        )
+    ) {
+        findings.push({
+            title: "URL Uses IP Address",
+            severity: "medium",
+            score: 25,
+            description:
+                "The link uses an IP address instead of a normal domain name."
+        });
+    }
+
+
+    if (
+        url.hostname.includes(
+            "xn--"
+        )
+    ) {
+        findings.push({
+            title: "Punycode Domain",
+            severity: "medium",
+            score: 15,
+            description:
+                "The domain uses Punycode, which can be used for lookalike phishing domains."
+        });
+    }
+
+
+    return findings;
+}
+
+
+async function extractFileText(file) {
+    const name =
+        file.name
+            .toLowerCase();
+
+
+    if (
+        name.endsWith(
+            ".txt"
+        )
+    ) {
+        return await file.text();
+    }
+
+
+    if (
+        name.endsWith(
+            ".pdf"
+        )
+    ) {
+        return await extractPdfText(
+            file
+        );
+    }
+
+
+    if (
+        name.endsWith(
+            ".docx"
+        )
+    ) {
+        return await extractDocxText(
+            file
+        );
+    }
+
+
+    throw new Error(
+        "Unsupported file"
+    );
+}
+
+
+async function extractPdfText(file) {
+    const data =
+        await file.arrayBuffer();
+
+
+    const pdf =
+        await pdfjsLib
+            .getDocument({
+                data: data
+            })
+            .promise;
+
+
+    let text =
+        "";
+
+
+    for (
+        let pageNumber = 1;
+        pageNumber <= pdf.numPages;
+        pageNumber++
+    ) {
+        const page =
+            await pdf.getPage(
+                pageNumber
+            );
+
+        const content =
+            await page.getTextContent();
+
+
+        content.items.forEach(
+            function(item) {
+                text +=
+                    item.str +
+                    " ";
+            }
+        );
+    }
+
+
+    return text;
+}
+
+
+async function extractDocxText(file) {
+    const data =
+        await file.arrayBuffer();
+
+
+    const result =
+        await mammoth.extractRawText({
+            arrayBuffer: data
+        });
+
+
+    return result.value;
+}
+
+
+function displayDomainAnalysis(result) {
+    const section =
+        document.getElementById(
+            "domain-analysis"
+        );
+
+    const platform =
+        document.getElementById(
+            "domain-platform"
+        );
+
+    const domain =
+        document.getElementById(
+            "domain-name"
+        );
+
+    const age =
+        document.getElementById(
+            "domain-age"
+        );
+
+    const redirect =
+        document.getElementById(
+            "domain-redirect"
+        );
+
+    const dns =
+        document.getElementById(
+            "domain-dns"
+        );
+
+
+    if (
+        !section ||
+        !result
+    ) {
+        return;
+    }
+
+
+    section.style.display =
+        "block";
+
+
+    if (
+        result.platform &&
+        result.platform.detected
+    ) {
+        platform.textContent =
+            result.platform.name;
+    }
+
+    else {
+        platform.textContent =
+            "Direct / Unknown";
+    }
+
+
+    domain.textContent =
+        result.analysisDomain ||
+        result.domain ||
+        "Unknown";
+
+
+    if (
+        result.registration &&
+        result.registration.ageDays !== null &&
+        result.registration.ageDays !== undefined
+    ) {
+        const ageDays =
+            result.registration.ageDays;
+
+
+        if (
+            ageDays >= 365
+        ) {
+            const years =
+                Math.floor(
+                    ageDays /
+                    365
+                );
+
+
+            age.textContent =
+                years +
+                " year" +
+                (
+                    years === 1
+                        ? ""
+                        : "s"
+                ) +
+                " old";
+        }
+
+        else {
+            age.textContent =
+                ageDays +
+                " day" +
+                (
+                    ageDays === 1
+                        ? ""
+                        : "s"
+                ) +
+                " old";
+        }
+    }
+
+    else {
+        age.textContent =
+            "Unavailable";
+    }
+
+
+    if (
+        result.redirect &&
+        result.redirect.redirected
+    ) {
+        const originalDomain =
+            result.redirect.originalDomain ||
+            "Unknown";
+
+        const finalDomain =
+            result.redirect.finalDomain ||
+            "Unknown";
+
+
+        if (
+            originalDomain ===
+            finalDomain
+        ) {
+            redirect.textContent =
+                "Internal redirect";
+        }
+
+        else {
+            redirect.textContent =
+                originalDomain +
+                " → " +
+                finalDomain;
+        }
+    }
+
+    else {
+        redirect.textContent =
+            "No redirect detected";
+    }
+
+
+    if (result.dns) {
+        if (
+            result.dns.hasA ||
+            result.dns.hasAAAA
+        ) {
+            dns.textContent =
+                "DNS records found";
+        }
+
+        else {
+            dns.textContent =
+                "No A or AAAA records found";
+        }
+    }
+
+    else {
+        dns.textContent =
+            "Unavailable";
+    }
+}
+
+
+function clearDomainAnalysis() {
+    const section =
+        document.getElementById(
+            "domain-analysis"
+        );
+
+
+    if (section) {
+        section.style.display =
+            "none";
+    }
+
+
+    const fields = [
+        "domain-platform",
+        "domain-name",
+        "domain-age",
+        "domain-redirect",
+        "domain-dns"
+    ];
+
+
+    fields.forEach(
+        function(id) {
+            const element =
+                document.getElementById(
+                    id
+                );
+
+
+            if (element) {
+                element.textContent =
+                    "Unknown";
+            }
+        }
+    );
+}
+
+
+function displayResults(findings, score) {
+    const results =
+        document.getElementById(
+            "scanner-results"
+        );
+
+    const scoreElement =
+        document.getElementById(
+            "risk-score"
+        );
+
+    const label =
+        document.getElementById(
+            "risk-label"
+        );
+
+    const meter =
+        document.getElementById(
+            "risk-meter-fill"
+        );
+
+    const summary =
+        document.getElementById(
+            "risk-summary"
+        );
+
+    const findingsContainer =
+        document.getElementById(
+            "findings"
+        );
+
+
+    scoreElement.textContent =
+        score +
+        "/100";
+
+
+    meter.style.width =
+        score +
+        "%";
+
+
+    meter.className =
+        "risk-meter-fill";
+
+
+    if (
+        score < 20
+    ) {
+        label.textContent =
+            "Low Risk";
+
+        summary.textContent =
+            "Few common scam indicators were detected.";
+
+        meter.classList.add(
+            "risk-low"
+        );
+    }
+
+    else if (
+        score < 45
+    ) {
+        label.textContent =
+            "Moderate Risk";
+
+        summary.textContent =
+            "Several cautionary indicators were detected. These can also appear in legitimate commission-based roles, so verify the employer and compensation terms before continuing.";
+
+        meter.classList.add(
+            "risk-moderate"
+        );
+    }
+
+    else if (
+        score < 70
+    ) {
+        label.textContent =
+            "High Risk";
+
+        summary.textContent =
+            "Multiple suspicious indicators were detected. Use caution and independently verify the employer.";
+
+        meter.classList.add(
+            "risk-high"
+        );
+    }
+
+    else {
+        label.textContent =
+            "Critical Risk";
+
+        summary.textContent =
+            "Strong indicators commonly associated with job scams were detected. Do not send money, credentials, or sensitive information.";
+
+        meter.classList.add(
+            "risk-critical"
+        );
+    }
+
+
+    findingsContainer.innerHTML =
+        "";
+
+
+    if (
+        findings.length === 0
+    ) {
+        const paragraph =
+            document.createElement(
+                "p"
+            );
+
+
+        paragraph.textContent =
+            "No configured scam indicators were detected. This does not guarantee that the posting is legitimate.";
+
+
+        findingsContainer.appendChild(
+            paragraph
+        );
+    }
+
+
+    findings.forEach(
+        function(finding) {
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "finding finding-" +
+                finding.severity;
+
+
+            const title =
+                document.createElement(
+                    "strong"
+                );
+
+
+            if (
+                finding.score > 0
+            ) {
+                title.textContent =
+                    finding.title +
+                    " (+" +
+                    finding.score +
+                    ")";
+            }
+
+            else {
+                title.textContent =
+                    finding.title;
+            }
+
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.textContent =
+                finding.description;
+
+
+            item.appendChild(
+                title
+            );
+
+            item.appendChild(
+                description
+            );
+
+
+            findingsContainer.appendChild(
+                item
+            );
+        }
+    );
+
+
+    results.classList.add(
+        "visible"
+    );
+}
+
+
+function removeDuplicates(findings) {
+    const titles =
+        [];
+
+
+    return findings.filter(
+        function(finding) {
+            if (
+                titles.includes(
+                    finding.title
+                )
+            ) {
+                return false;
+            }
+
+
+            titles.push(
+                finding.title
+            );
+
+
+            return true;
+        }
+    );
+}
+
+
+function isValidUrl(value) {
+    try {
+        const url =
+            new URL(
+                value
+            );
+
+
+        return (
+            url.protocol === "http:" ||
+            url.protocol === "https:"
+        );
+    }
+
+    catch (error) {
+        return false;
+    }
+}
+
+
+function setStatus(message) {
+    document
+        .getElementById(
+            "scanner-status"
+        )
+        .textContent =
+            message;
+}
+
+
+function clearScanner() {
+    document
+        .getElementById(
+            "job-posting"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "job-file"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "job-url"
+        )
+        .value =
+            "";
+
+
+    document
+        .getElementById(
+            "scanner-results"
+        )
+        .classList
+        .remove(
+            "visible"
+        );
+
+
+    clearDomainAnalysis();
+
+
+    setStatus("");
+}
+
+
+document
+    .getElementById(
+        "scan-button"
+    )
+    .addEventListener(
+        "click",
+        scanPosting
+    );
+
+
+document
+    .getElementById(
+        "clear-button"
+    )
+    .addEventListener(
+        "click",
+        clearScanner
+    );
+
+const mobileMenu =
+    document.getElementById(
+        "mobile-menu"
+    );
+
+const navLinks =
+    document.getElementById(
+        "nav-links"
+    );
+
+if (
+    mobileMenu &&
+    navLinks
+) {
+    mobileMenu.addEventListener(
+        "click",
+        function() {
+            const expanded =
+                this.getAttribute(
+                    "aria-expanded"
+                ) ===
+                "true";
+
+
+            this.setAttribute(
+                "aria-expanded",
+                String(
+                    !expanded
+                )
+            );
+
+            navLinks.classList.toggle(
+                "active"
+            );
+        }
+    );
+}
+
+function extractUrlsFromText(text) {
+    const urlPattern =
+        /https?:\/\/[^\s<>"')\]]+/gi;
+
+
+    const matches =
+        text.match(
+            urlPattern
+        );
+
+
+    if (!matches) {
+        return [];
+    }
+
+
+    const cleanedUrls =
+        matches.map(
+            function(url) {
+                return url.replace(
+                    /[.,;!?]+$/,
+                    ""
+                );
+            }
+        );
+
+
+    return [
+        ...new Set(
+            cleanedUrls
+        )
+    ];
+}
+
+function extractEmailAddresses(text) {
+    const emailPattern =
+        /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi;
+
+
+    const matches =
+        text.match(
+            emailPattern
+        );
+
+
+    if (!matches) {
+        return [];
+    }
+
+
+    return [
+        ...new Set(
+            matches.map(
+                function(email) {
+                    return email.toLowerCase();
+                }
+            )
+        )
+    ];
+}
+
+
+async function scanRecruiterEmails(text) {
+    const emails =
+        extractEmailAddresses(
+            text
+        );
+
+
+    const findings =
+        [];
+
+
+    const personalProviders = [
+        "gmail.com",
+        "yahoo.com",
+        "hotmail.com",
+        "outlook.com",
+        "aol.com",
+        "icloud.com"
+    ];
+
+
+    for (const email of emails) {
+        const domain =
+            email.split("@")[1];
+
+
+        if (
+            personalProviders.includes(
+                domain
+            )
+        ) {
+            findings.push({
+                title:
+                    "Recruiter Uses Personal Email",
+
+                severity:
+                    "low",
+
+                score:
+                    10,
+
+                description:
+                    "A recruiter contact uses a personal email provider instead of an employer-owned domain: " +
+                    email
+            });
+
+
+            continue;
+        }
+
+
+        try {
+            const result =
+                await checkDomainWithBackend(
+                    "https://" + domain
+                );
+
+
+            if (
+                result.findings &&
+                Array.isArray(
+                    result.findings
+                )
+            ) {
+                result.findings.forEach(
+                    function(finding) {
+
+                        if (
+                            finding.title ===
+                            "Possible Brand Impersonation"
+                        ) {
+                            findings.push({
+                                title:
+                                    "Suspicious Recruiter Email Domain",
+
+                                severity:
+                                    "high",
+
+                                score:
+                                    35,
+
+                                description:
+                                    "The recruiter email uses a domain that may impersonate a well-known company: " +
+                                    email
+                            });
+                        }
+
+
+                        if (
+                            finding.title ===
+                            "Very New Domain"
+                        ) {
+                            findings.push({
+                                title:
+                                    "Recruiter Email Uses Very New Domain",
+
+                                severity:
+                                    "medium",
+
+                                score:
+                                    15,
+
+                                description:
+                                    "The recruiter email domain appears to have been registered very recently: " +
+                                    domain
+                            });
+                        }
+
+                    }
+                );
+            }
+        }
+
+        catch (error) {
+            console.error(
+                "Recruiter email domain scan failed:",
+                email,
+                error
+            );
+        }
+    }
+
+
+    return findings;
+}
+
+async function scanUrlsFromText(text) {
+    const urls =
+    extractUrlsFromText(
+        text
+    )
+    .slice(
+        0,
+        10
+    );
+
+    const findings =
+        [];
+
+    const analyses =
+        [];
+
+
+    for (const url of urls) {
+        try {
+            const result =
+                await checkDomainWithBackend(
+                    url
+                );
+
+
+            analyses.push({
+                url: url,
+                result: result
+            });
+
+
+            if (
+                result.findings &&
+                Array.isArray(
+                    result.findings
+                )
+            ) {
+                result.findings.forEach(
+                    function(finding) {
+
+                        if (
+                            finding.score > 0
+                        ) {
+                            findings.push({
+                                title:
+                                    finding.title,
+
+                                severity:
+                                    finding.severity,
+
+                                score:
+                                    finding.score,
+
+                                description:
+                                    finding.description +
+                                    " Detected URL: " +
+                                    url
+                            });
+                        }
+
+                    }
+                );
+            }
+        }
+
+        catch (error) {
+            console.error(
+                "Embedded URL scan failed:",
+                url,
+                error
+            );
+        }
+    }
+
+
+    return {
+        urls: urls,
+        findings: findings,
+        analyses: analyses
+    };
+}
 </script>
 
 </body>
+
 </html>
