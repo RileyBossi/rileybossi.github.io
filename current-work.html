@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +7,28 @@
       "@context":"https://schema.org",
       "@type":"Person",
       "name":"Riley Bossi",
-      "url":"https://YOURDOMAIN.com",
+      "url":"https://rileybossi.github.io/",
       "jobTitle":"IT Support Technician",
       "sameAs":[
         "https://github.com/RileyBossi",
         "https://www.linkedin.com/in/riley-bossi-b08729295"
       ]
     }
-</script>
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Current cybersecurity, cloud, eBPF, and artificial intelligence projects being developed by Riley Bossi."
+    >
+
     <title>Current Work | Riley Bossi</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <nav>
@@ -51,45 +60,109 @@
     </div>
 </nav>
 
+
 <section class="section">
 
     <div class="container">
 
         <h1 class="section-title">What I'm Currently Working On</h1>
 
+        <p>
+            My current work focuses on cybersecurity, cloud infrastructure,
+            Linux systems, eBPF development, and practical applications of
+            artificial intelligence.
+        </p>
+
+
         <div class="card">
 
-            <h3>AWS Certified Solutions Architect</h3>
+            <h3>eBPF Runtime Security Monitoring Tool</h3>
 
             <p>
-                Currently studying cloud architecture, AWS networking,
-                IAM, scalability, and cloud security concepts while
-                preparing for the AWS Certified Solutions Architect exam.
+                Developing a Linux runtime security monitoring platform using
+                eBPF to observe system activity at the kernel level and detect
+                potentially suspicious behavior in real time.
             </p>
 
-        </div>
-
-        <div class="card">
-
-            <h3>Malware Analysis Tool</h3>
-
             <p>
-                Developing a malware analysis application focused on:
+                The project combines custom eBPF programs with a purpose-built
+                Linux environment created using Yocto and deployed through AWS
+                infrastructure.
             </p>
 
             <ul>
-                <li>Static malware analysis</li>
-                <li>Behavior analysis</li>
-                <li>PE header analysis</li>
-                <li>Threat intelligence integration</li>
-                <li>Hash matching and IOC detection</li>
+                <li>eBPF-based process and system-call monitoring</li>
+                <li>Network activity monitoring</li>
+                <li>Runtime security event detection</li>
+                <li>libbpf and BPF CO-RE development</li>
+                <li>Custom Yocto Linux images with BTF support</li>
+                <li>Virtualized security testing environments using QEMU/KVM</li>
+                <li>AWS-based build and runtime infrastructure</li>
+                <li>Security event collection and analysis</li>
             </ul>
 
         </div>
 
+
+        <div class="card">
+
+            <h3>AI Vehicle Recommendation Tool</h3>
+
+            <p>
+                Developing an AI-powered vehicle recommendation system designed
+                to help users identify vehicles that match their needs,
+                preferences, and budget.
+            </p>
+
+            <p>
+                The goal is to combine structured vehicle data with intelligent
+                recommendation logic so users can describe what they are looking
+                for naturally and receive relevant vehicle suggestions.
+            </p>
+
+            <ul>
+                <li>AI-assisted vehicle recommendations</li>
+                <li>Natural-language preference input</li>
+                <li>Vehicle feature and specification comparison</li>
+                <li>Budget and price filtering</li>
+                <li>User preference matching</li>
+                <li>Recommendation scoring and ranking</li>
+                <li>Vehicle data processing and analysis</li>
+            </ul>
+
+        </div>
+
+
+       
+        <div class="card">
+
+            <h3>AWS Certified Security - Specialty</h3>
+
+            <p>
+                Currently studying advanced AWS security concepts while preparing
+                for the AWS Certified Security - Specialty certification.
+                My focus includes securing cloud infrastructure, identity and
+                access management, data protection, network security, logging,
+                threat detection, and incident response within AWS environments.
+            </p>
+
+            <ul>
+                <li>AWS Identity and Access Management (IAM)</li>
+                <li>CloudTrail and security logging</li>
+                <li>Amazon GuardDuty and threat detection</li>
+                <li>AWS KMS and data encryption</li>
+                <li>VPC and network security</li>
+                <li>Security monitoring and incident response</li>
+                <li>Secure cloud architecture and configuration</li>
+            </ul>
+
+        </div>
+
+
     </div>
 
 </section>
+
 
 <footer>
 
@@ -97,7 +170,9 @@
 
         <div>
             <h3>Riley Bossi</h3>
-            <p>Cybersecurity • Systems Administration • Cloud • IT Operations</p>
+            <p>
+                Cybersecurity • Systems Administration • Cloud • IT Operations
+            </p>
         </div>
 
         <div>
@@ -134,6 +209,7 @@
     </div>
 
 </footer>
+
 
 <script>
     const menuBtn = document.getElementById("mobile-menu");
@@ -192,3 +268,4 @@
 
 </body>
 </html>
+```
